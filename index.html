@@ -1,148 +1,40 @@
 <!DOCTYPE html>
-<html ng-app="myapp" ng-controller="mainController">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TruckNation</title>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TruckNation</title>
-    <!-- AngularJS stuffs -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <!-- Minified CSS -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/{{css}}/bootstrap.min.css" ng-cloak>
-    <!-- Custom styles for this template -->
-    <link href="misc.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="main.css" rel="stylesheet">
 
-</head>
-
-<body>
-    <div class="visible-xs container">
-        <div class="vertical-center-row">
-            <div class="alert alert-danger">
-                <h3>This website is only usable on desktop and laptop computers&hellip;</h3>
-                <br>Are you trying to play CS:GO on your phone? If not try making the browser window larger.</div>
-        </div>
-    </div>
-    <div class="hidden-xs">
-        <video autoplay loop id="bgvid">
-            <source src="http://zippy.gfycat.com/BoilingWiltedJohndory.webm" type="video/webm">
-        </video>
+        <!-- LeafLet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    </head>
+    <body>
         <div class="container">
-            <div class="row">
-                <div class="row">&nbsp;</div>
-                <!-- section to select styles -->
-                <div class="row">
-                    <div class="col-md-2 col-md-offset-10">
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <select class="form-control btn btn-default" ng-model="css" ng-options="bootstrap.url as bootstrap.name for bootstrap in bootstraps"></select>
-                            </div>
-                        </div>
+            <div class="menu left-menu">
+                <div class="profile-info">
+                    <img class="profile-pic" src="http://gdb.voanews.com/E52F1A97-C318-4CB2-A2F5-F4882C6E39D1_cx0_cy28_cw0_mw1024_mh1024_s.jpg" />
+
+                    <div class="profile-text">
+                        <h1>Harambe Was Here</h1>
+                        <h3>RIP 1999-2016</h3>
                     </div>
                 </div>
-                <div class="row">&nbsp;
-                    <br>&nbsp;
-                    <br>&nbsp;
-                </div>
-                <!-- Button row -->
-                <div class="row">
-                    <!-- CSGO -->
-                    <div class="col-md-4" ng-controller="CSGO_server_Ajax">
-                        <div class="btn-block btn-group-vertical">
-                            <a ng-class='{disabled: !csgoLoaded || csgoData.status == "offline"}' class="btn btn-lg btn-default" ng-href="steam://connect/{{csgoHost}}/" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click to connect to server">
-                                <small>Connect to</small>
-                                <br>
-                                <h2>CS:GO Server</h2>
-                            </a>
-                            <a href="" class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Click to show {{showInfo ? 'less' : 'more'}} info" ng-init="showInfo = false" ng-click="showInfo = !showInfo" ng-class="{disabled: !(csgoData.players.length > 0)}">
-                                <div ng-show="csgoLoaded" ng-cloak>
-                                    Server: <code>{{csgoHost}}</code>
-                                    <span ng-class='{"label-danger": csgoData.status == "offline", "label-success": csgoData.status == "online"}' class="label">{{csgoData.status}}</span>
-                                    <br>
-                                    <br>
-                                    <span ng-hide='csgoData.status == "offline"'>Map: {{csgoData.map}} | Players: {{csgoData.players.length}} / {{csgoData.maxplayers}}</span>
-                                </div>
-                                <div class='h3' ng-hide="csgoLoaded">Loading&hellip;</div>
-                            </a>
-                        </div>
-                        <div class="row">&nbsp;</div>
-                        <ul class="list-group" ng-show="showInfo">
-                            <h4 class="list-group-item active" style="border: none;">Players ({{csgoData.players.length}}):</h4>
-                            <li class="list-group-item" ng-repeat="player in csgoData.players">
-                                {{player.name}} <span class="badge">{{player.score}}</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Mumble -->
-                    <div class="col-md-4" ng-controller="mumble_server_Ajax">
-                        <div class="btn-block btn-group-vertical">
-                            <a ng-class='{disabled: !mumbleLoaded}' class="btn btn-default btn-lg" href="mumble://mumble.michno.me/?version=1.2.0" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click to connect to server">
-                                <small>Connect to</small>
-                                <br>
-                                <h2>Mumble Server</h2>
-                            </a>
-                            <a href="" class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Click to show {{showInfo ? 'less' : 'more'}} info" ng-init="showInfo = false" ng-click="showInfo = !showInfo" ng-class="{disabled: !(mumbleData.players.length > 0)}">
-                                <div ng-show="mumbleLoaded" ng-cloak>
-                                    Server: <code>{{mumbleData.query.host}}</code>
-                                    <span ng-class='{"label-danger": mumbleData.status == "offline", "label-success": mumbleData.status == "online"}' class="label">{{mumbleData.status}}</span>
-                                    <br>
-                                    <br>Slots: {{mumbleData.players.length}} / {{mumbleData.maxplayers}}
-                                </div>
-                                <div class='h3' ng-hide="mumbleLoaded">Loading&hellip;</div>
-                            </a>
-                        </div>
-                        <div class="row">&nbsp;</div>
-                        <ul class="list-group" ng-show="showInfo">
-                            <h4 class="list-group-item active" style="border: none;">Clients ({{mumbleData.players.length}}):</h4>
-                            <li class="list-group-item">
-                                Not supported at the moment&hellip;
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Teamspeak3 -->
-                    <div class="col-md-4" ng-controller="ts3_server_Ajax">
-                        <div class="btn-block btn-group-vertical">
-                            <a ng-class='{disabled: !ts3Loaded}' class="btn btn-lg btn-block btn-default" href="ts3server://ts.michno.me?port=9987" data-toggle="tooltip" data-placement="top" title="" data-original-title="Click to connect to server">
-                                <small>Connect to</small>
-                                <br>
-                                <h2>Teamspeak3 Server</h2>
-                            </a>
-                            <a href="" class="btn btn-primary btn-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Click to show {{showInfo ? 'less' : 'more'}} info" ng-init="showInfo = false" ng-click="showInfo = !showInfo" ng-class="{disabled: !(ts3Data.players.length > 0)}">
-                                <div ng-show="ts3Loaded" ng-cloak>
-                                    Server: <code>{{ts3Data.query.host}}</code>
-                                    <span ng-class='{"label-danger": ts3Data.status == "offline", "label-success": ts3Data.status == "online"}' class="label">
-                                {{ts3Data.status}}
-                            </span>
-                                    <br>
-                                    <br>Slots: {{ts3Data.players.length}} / {{ts3Data.maxplayers-ts3Data.raw.virtualserver_reserved_slots}} (+ {{ts3Data.raw.virtualserver_reserved_slots}} reserved)
-                                </div>
-                                <div class='h3' ng-hide="ts3Loaded">Loading&hellip;</div>
-                            </a>
-                        </div>
-                        <div class="row">&nbsp;</div>
-                        <ul class="list-group" ng-show="showInfo">
-                            <h4 class="list-group-item active" style="border: none;">Clients ({{ts3Data.players.length}}):</h4>
-                            <li class="list-group-item" ng-repeat="ts3_client in ts3Data.players">
-                                {{ts3_client.name}}
-                            </li>
-                        </ul>
-                    </div>
+
+
+            </div>
+            <div class="main" id="truckster_map"></div>
+            <div class="menu right-menu">
+                <div class="right-inner">
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-    $(function() {
-        $("[data-toggle='tooltip']").tooltip();
-    });
-    $('#reloadHint').delay(30000).show('fast');
-    </script>
-</body>
+    </body>
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </html>
