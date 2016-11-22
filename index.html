@@ -8,63 +8,48 @@
 
         <!-- Custom styles for this template -->
         <link href="main.css" rel="stylesheet">
-
-        <!-- LeafLet -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-
-        <!-- Route -->
-        <link rel="stylesheet" href="http://www.liedman.net/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
-        <script src="http://www.liedman.net/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
     </head>
-    <body>
-        <div class="container">
-            <div class="menu left-menu">
-                <div class="profile-info">
-                    <div class="profile-pic" style="background-image: url(assets/images/profile.jpg)"></div>
+    <body class="login">
+        <div class="login-title">
+            <h1>TruckNation</h1>
+        </div>
 
-                    <div class="profile-text">
-                        <h1>Martin Shkreli</h1>
-                        <h3>Senior Vice President</h3>
-                    </div>
-                </div>
+        <div class="login-container">
+            <div class="form">
+                <h2>Login to your account</h2>
 
-                <div class="vehicle-container">
+                <div class="login-message error">
+                    <p>Error</p>
                 </div>
 
-                <div class="vehicle-container">
-                    <div class="vehicle noselect" data-lat="57.048820" data-lon="9.921747">
-                        <div class="vehicle-pic" style="background-image: url(assets/images/truck.jpg)">
-                            <div class="driver-pic" style="background-image: url(assets/images/driver.jpg)"></div>
-                        </div>
-                        <div class="vehicle-text">
-                            <p class="vehicle-name">Ford Mondeo</p>
-                            <p class="vehicle-vintage">Vintage: 2006</p>
-                            <p class="vehicle-status">Status: Driveing</p>
-                            <p class="driver-name">Mike Ehrmantraut</p>
-                        </div>
-                    </div>
-                    <div class="vehicle noselect" data-lat="56.162939" data-lon="10.203921">
-                        <div class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)">
-                            <div class="driver-pic"></div>
-                        </div>
-                        <div class="vehicle-text">
-                            <p class="vehicle-name">Ford Mondeo</p>
-                            <p class="vehicle-vintage">Vintage: 2006</p>
-                            <p class="vehicle-status">Status: Parked</p>
-                            <p class="driver-name">Walter White &nbsp;</p>
-                        </div>
-                    </div>
+                <!--
+                <div class="login-message warning">
+                    <p>Warning</p>
                 </div>
-            </div>
-            <div class="main" id="truckster_map"></div>
-            <div class="menu right-menu">
-                <div class="right-inner">
+
+                <div class="login-message success">
+                    <p>Success</p>
                 </div>
+
+                <div class="login-message info">
+                    <p>Info</p>
+                </div>
+                -->
+
+                <form class="login-form" method="POST">
+                    <input type="text" name="username" placeholder="Username" />
+                    <input type="password" name="password" placeholder="Password" />
+                    <p>
+                        <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+                        <label for="filled-in-box">Filled in</label>
+                    </p>
+
+                    <input type="submit" value="Login" />
+                </form>
             </div>
         </div>
-    </body>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="app2.js"></script>
+    </body>
 </html>

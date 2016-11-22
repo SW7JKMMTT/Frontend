@@ -1,0 +1,96 @@
+@import "_variables.scss";
+@import "general.scss";
+
+body.login {
+    background-color: $mercury;
+
+    .login-title {
+        padding: 50px 0;
+        text-align: center;
+        letter-spacing: 2px;
+        font-weight: 300;
+    }
+
+    .login-container {
+        position: relative;
+        background: $white;
+        max-width: 320px;
+        width: 100%;
+        border-top: 5px solid $bar_color;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+
+        .form {
+            display: block;
+            padding: 40px;
+
+            .login-message {
+                border: 1px solid;
+
+                margin: 0px 0px 20px 0px;
+                padding: 10px;
+
+                font-size: 13px;
+                font-weight: bold;
+
+                display: none;
+
+                &.error {
+                    background-color: $error_bg;
+                    color: $error_line;
+                    border-color: $error_line;
+                }
+
+                &.warning {
+                    background-color: $warning_bg;
+                    color: $warning_line;
+                    border-color: $warning_line;
+                }
+
+                &.info {
+                    background-color: $info_bg;
+                    color: $info_line;
+                    border-color: $info_line;
+                }
+
+                &.success {
+                    background-color: $success_bg;
+                    color: $success_line;
+                    border-color: $success_line;
+                }
+            }
+
+            h2 {
+                margin: 0 0 20px;
+                color: $bar_color;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 1;
+            }
+
+            input[type=text], input[type=password] {
+                outline: none;
+                display: block;
+                width: 100%;
+                border: 1px solid $alto;
+                margin: 0 0 20px;
+                padding: 10px 15px;
+                box-sizing: border-box;
+                font-wieght: 400;
+            }
+
+            input[type=submit] {
+                cursor: pointer;
+                background: $bar_color;
+                width: 100%;
+                border: 0;
+                padding: 10px 15px;
+                color: $white;
+
+                &:hover {
+                    background: $bar_hover;
+                }
+            }
+        }
+    }
+}
