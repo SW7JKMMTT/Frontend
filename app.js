@@ -1,103 +1,67 @@
-$(document).ready(function() {
-    var map = init();
+var user_url = "http://localhost:8080/services-1.0.0/user"
+var vehicle_url = "http://localhost:8080/services-1.0.0/vehicle"
+var id = "5835a511396e6f2a5c22fc15"
 
-    $(".vehicle").on("click", function() {
-        lat = $(this).data("lat");
-        lon = $(this).data("lon");
-
-        if (lat === undefined || lon === undefined)
-            return;
-
-        map.panTo(new L.LatLng(lat, lon));
-    });
-});
-
-function init()
-{
-    
-    username = "deadpool"
-    token = "549tnemr4bo7rsn93hu4hhrl";
-    return "test";
+function print(e){
+    console.log(e);
 }
 
-// function init() {
-//     lat = 0;
-//     lon = 0;
-//     vehicles = $('.vehicle').length;
+$(document).ready(function() {
+    $(".tab-contents-container:not(:first)").hide();
+    $(".tab:first").addClass('active');
 
-//     $('.vehicle').each(function() {
-//         lat += parseFloat($(this).data("lat"));
-//         lon += parseFloat($(this).data("lon"));
-//     });
+    $("body").on("click", ".tab", function(){
+        if($(this).hasClass("active"))
+            return;
 
-//     map = L.map('truckster_map', {
-//         center: [(lat / vehicles), (lon / vehicles)],
-//         zoom: 9
-//     });
+        $('.tab').removeClass('active');
+        $(this).addClass('active');
 
-//     L.tileLayer('http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-//         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-//     }).addTo(map);
+        $('.tab-contents-container').hide();
+        $('.tab-contents-container[data-type=' +  $(this).data('bind') + ']').show();
+    });
 
-//     test = L.Routing.control({
-//         waypoints: [
-//             L.latLng(55.6760968, 12.568337100000008),
-//             L.latLng(55.40375599999999, 10.402370000000019),
-//             L.latLng(56.162939, 10.203921)
-//         ],
-//         plan: L.Routing.plan({
-//             addWaypoints: true
-//         }),
-//         lineOptions: {
-//             styles: [{
-//                 color: 'black',
-//                 opacity: 0.75,
-//                 weight: 3
-//             }]
-//         },
-//         fitSelectedRoutes: false
-//     }).addTo(map);
-
-//     test.addWaypoints([L.latLng(56.563173, 9.022822)]);
-//     //test.setWaypoints(test.getWaypoints().concat([L.latLng(56.563173, 9.022822)]));
-
-//     // L.Routing.control({
-//     //     waypoints: [
-//     //         L.latLng(56.563173, 9.022822),
-//     //         L.latLng(57.048820, 9.921747),
-//     //     ],
-//     //     lineOptions: {
-//     //         styles: [{
-//     //             color: 'darkgrey',
-//     //             opacity: 0.75,
-//     //             weight: 3
-//     //         }]
-//     //     },
-//     //     fitSelectedRoutes: false
-//     // }).addTo(map);
+    decorate_user();
+});
 
 
-//     console.log(L.Routing)
- 
-//     return map;
+function decorate_user()
+{
+    var container = $('.staff-container');
+    container.html("");
+    
+    $.get(user_url, function( data ) {
+        for (var i = 0; i < data.length; i++)
+        {
+            user = data[i];
 
-// }
+            print(user);
+            if(user.id == id)
+            {
+                imageurl = "";
+                if(user.hasIcon)
+                    $('.profile-pic').css('background-image', 'url(' + "assets/images/driver.jpg" + ')');
 
+                $('.profile-text h1').html(user.givenname + ' ' + user.surname);
+                if(user.permissions.length > 0)
+                    $('.profile-text h3').html(user.permissions[0].permission);
+            }else
+            {
+                imageurl = "";
+                if(user.hasIcon)
+                    imageurl = " style=\"background-image: url(assets/images/driver.jpg)\"";
 
+                staff = '<div class="staff noselect">' +
+                        '<div class="staff-pic"' + imageurl + '>' +
+                        '</div>' +
+                        '<div class="staff-text">' +
+                        '<p class="staff-name">' + user.givenname + ' ' + user.surname + '</p>' +
+                        '<p class="staff-vintage">Username: ' + user.username + '</p>' +
+                        '</div>' +
+                        '</div>';
 
-
-// function right_menu_in(e) {
-//     $('.right-inner').animate({
-//         "left": "0%"
-//     }, 150);
-
-//     setTimeout(function() {
-//         right_menu_out()
-//     }, 1000);
-// }
-
-// function right_menu_out() {
-//     $('.right-inner').animate({
-//         "left": "100%"
-//     }, 150);
-// }
+                container.append(staff);
+            }
+        }
+    });
+}

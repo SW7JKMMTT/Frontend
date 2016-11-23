@@ -22,12 +22,11 @@ $('document').ready(function() {
                     success: function (data) {
                         localStorage.setItem("token", data["token"]);
                         window.location="dashboard.html";
+                    }, error(e) {
+                        $('.login-message p').html("Error during login.");
+                        $('.login-message').stop(true, false).slideDown('veryfast');
                     }
                 });
-
-
-                $('.login-message p').html($('input[name=username]').val());
-                $('.login-message').stop(true, false).slideDown('veryfast');
             });
 
             return false;
