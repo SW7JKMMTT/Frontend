@@ -1,0 +1,36 @@
+<div class="login">
+    <div class="login-title">
+        <h1>TruckNation</h1>
+    </div>
+
+    <div class="login-container">
+        <div class="form">
+            <h2>Login to your account</h2>
+
+            <div class="login-message error">
+                <p>Error</p>
+            </div>
+
+            <!--
+            <div class="login-message warning">
+                <p>Warning</p>
+            </div>
+
+            <div class="login-message success">
+                <p>Success</p>
+            </div>
+
+            <div class="login-message info">
+                <p>Info</p>
+            </div>
+            -->
+
+            <form #form="ngForm" (ngSubmit)="login(form.value)" class="login-form">
+                <input type="text" name="username" placeholder="Username" ngModel />
+                <input type="password" name="password" placeholder="Password" ngModel />
+                <input type="submit" value="Login" />
+                <!--<button (click)="newMinor()">New minor version</button>-->
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="dashboard">
+    <div class="container">
+        <div class="menu left-menu">
+            <div class="profile-info">
+                <div class="profile-pic"></div>
+
+                <div class="profile-text">
+                    <h1></h1>
+                    <h3></h3>
+                </div>
+            </div>
+
+            <div class="tab-container">
+                <div class="tab noselect" data-bind="vehicle">
+                    <p>Vehicles</p>
+                </div>
+                <div class="tab noselect" data-bind="staff">
+                    <p>Staff</p>
+                </div>
+            </div>
+
+            <div class="tab-contents-container" data-type="vehicle">
+                <div class="vehicle-container">
+                    <div class="vehicle noselect" data-lat="57.048820" data-lon="9.921747">
+                        <div class="vehicle-pic" style="background-image: url(assets/images/truck.jpg)">
+                            <div class="driver-pic" style="background-image: url(assets/images/driver.jpg)"></div>
+                        </div>
+                        <div class="vehicle-text">
+                            <p class="vehicle-name">Ford Mondeo</p>
+                            <p class="vehicle-vintage">Vintage: 2006</p>
+                            <p class="vehicle-status">Status: Driveing</p>
+                            <p class="driver-name">Mike Ehrmantraut</p>
+                        </div>
+                    </div>
+                    <div class="vehicle noselect" data-lat="56.162939" data-lon="10.203921">
+                        <div class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)">
+                            <div class="driver-pic"></div>
+                        </div>
+                        <div class="vehicle-text">
+                            <p class="vehicle-name">Ford Mondeo</p>
+                            <p class="vehicle-vintage">Vintage: 2006</p>
+                            <p class="vehicle-status">Status: Parked</p>
+                            <p class="driver-name">Walter White &nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-contents-container" data-type="staff">
+                <div class="staff-container">
+                <p>TESTER</p>
+                </div>
+            </div>
+        </div>
+        <div class="main" id="truckster_map"></div>
+        <div class="menu right-menu">
+            <div class="right-inner">
+            </div>
+        </div>
+    </div>
+</div>
