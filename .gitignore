@@ -40,3 +40,7 @@ public/__build__/**
 
 
 build/
+
+.sass-cache
+*.css
+*.css.map
