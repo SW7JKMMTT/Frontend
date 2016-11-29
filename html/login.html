@@ -1,0 +1,21 @@
+<div class="login">
+    <div class="login-title">
+        <h1>TruckNation</h1>
+    </div>
+
+    <div class="login-container">
+        <div class="form">
+            <h2>Login to your account</h2>
+
+            <div *ngIf="visibility == 'shown'" class="login-message error">
+                <p>{{ error }}</p>
+            </div>
+
+            <form #form="ngForm" (ngSubmit)="login(form.value)" class="login-form">
+                <input type="text" name="username" placeholder="Username" value="deadpool" ngModel />
+                <input type="password" name="password" placeholder="Password"  value="hunter2" ngModel />
+                <input type="submit" value="Login" />
+            </form>
+        </div>
+    </div>
+</div>

@@ -36,8 +36,6 @@ div.login {
                 font-size: 13px;
                 font-weight: bold;
 
-                display: none;
-
                 &.error {
                     background-color: $error_bg;
                     color: $error_line;

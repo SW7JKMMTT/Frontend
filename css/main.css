@@ -21,7 +21,7 @@
   /* Non-prefixed version, currently
      not supported by any browser */ }
 
-html, body, nuts {
+html, body, login {
   height: 100%;
   width: 100%; }
 
@@ -50,8 +50,7 @@ div.login {
         margin: 0px 0px 20px 0px;
         padding: 10px;
         font-size: 13px;
-        font-weight: bold;
-        display: none; }
+        font-weight: bold; }
         div.login .login-container .form .login-message.error {
           background-color: #f2dede;
           color: #a94442;
@@ -114,7 +113,7 @@ div.login {
   /* Non-prefixed version, currently
      not supported by any browser */ }
 
-html, body, nuts {
+html, body, login {
   height: 100%;
   width: 100%; }
 
@@ -145,7 +144,7 @@ div.dashboard {
             order: 0;
             overflow: hidden;
             background-size: cover;
-            background-image: url(assets/images/default_driver.jpg);
+            background-image: url(../assets/images/default_driver.jpg);
             background-position: center center;
             margin: 20px 20px 20px 20px;
             border-radius: 50%; }
@@ -208,7 +207,7 @@ div.dashboard {
                   margin: 50px 0px 0px 50px;
                   background-size: cover;
                   background-position: center center;
-                  background-image: url(assets/images/default_driver.jpg);
+                  background-image: url(../assets/images/default_driver.jpg);
                   border: 1px dashed #d3d3d3;
                   border-radius: 50%;
                   float: left; }
@@ -249,7 +248,7 @@ div.dashboard {
                 width: 75px;
                 order: 0;
                 background-size: cover;
-                background-image: url(assets/images/default_driver.jpg);
+                background-image: url(../assets/images/default_driver.jpg);
                 background-position: center center;
                 border-radius: 50%;
                 float: left; }
@@ -259,7 +258,7 @@ div.dashboard {
                   margin: 50px 0px 0px 50px;
                   background-size: cover;
                   background-position: center center;
-                  background-image: url(assets/images/default_driver.jpg);
+                  background-image: url(../assets/images/default_driver.jpg);
                   border: 1px dashed #d3d3d3;
                   border-radius: 50%;
                   float: left; }
