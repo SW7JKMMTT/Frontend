@@ -3,21 +3,20 @@ import { Component }                from '@angular/core';
 import { APIServices }              from './api.services';
 
 @Component({
-  selector: 'dashboard',
+  selector: 'map',
   providers: [APIServices],
-  templateUrl: "html/dashboard.html",
+  templateUrl: "html/modules/_map.html",
 })
 
-
-export class DashboardComponent {
+export class MapComponent {
     constructor(private APIServices: APIServices, private router: Router)
     {
         if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
             router.navigate(['login']);
-    }
 
-    clicked(event: string)
-    {
-        console.log(event);
-    }
+        // var map = new L.Map('truckster_map', {
+        //     center: new L.LatLng(40.731253, -73.996139),
+        //     zoom: 12,
+        // });
+   }
 }

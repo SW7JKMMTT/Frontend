@@ -29,6 +29,9 @@ export class LoginComponent {
             data => {
                 data = data.json();
 
+                console.log(data["token"]);
+                console.log(data["id"]);
+
                 localStorage.setItem("token", data["token"]);
                 localStorage.setItem("user", data["user"]);
                 

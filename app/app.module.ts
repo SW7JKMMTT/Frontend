@@ -7,7 +7,10 @@ import { RouterModule, Routes }              from '@angular/router';
 import { AppComponent }                      from './app.component';
 import { LoginComponent }                    from './login.component';
 import { DashboardComponent }                from './dashboard.component';
-import { ProfileInfoComponent }              from './profile_info.component';
+import { ProfileInfo }                       from './ProfileInfo/ProfileInfo.component';
+import { VehicleContainerComponent }         from './vehicle.component';
+import { StaffContainerComponent }           from './staff.component';
+import { MapComponent }                      from './map.component';
 
 const appRoutes: Routes = [
                 { path: 'dashboard', component: DashboardComponent },
@@ -16,7 +19,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports:        [ RouterModule.forRoot(appRoutes), BrowserModule, HttpModule, FormsModule ],
-    declarations:   [ AppComponent, LoginComponent, DashboardComponent, ProfileInfoComponent ],
+    declarations:   [ AppComponent, LoginComponent, DashboardComponent, ProfileInfo, VehicleContainerComponent, StaffContainerComponent, MapComponent ],
     bootstrap:      [ AppComponent ]
 })
 

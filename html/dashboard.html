@@ -4,23 +4,23 @@
             <profile-info></profile-info>
 
             <div class="tab-container">
-                <div class="tab noselect" data-bind="vehicle">
+                <div class="tab noselect" (click)="clicked('vehicle')">
                     <p>Vehicles</p>
                 </div>
-                <div class="tab noselect" data-bind="staff">
+                <div class="tab noselect" (click)="clicked('staff')">
                     <p>Staff</p>
                 </div>
             </div>
 
             <div class="tab-contents-container" data-type="vehicle">
-                <!-- <vehicle-container></vehicle-container> -->
+                <vehicle-container></vehicle-container>
             </div>
 
             <div class="tab-contents-container" data-type="staff">
-                <!-- <staff-container></staff-container> -->
+                <staff-container></staff-container>
             </div>
         </div>
-        <div class="main" id="truckster_map"></div>
+        <map></map>
         <div class="menu right-menu">
             <div class="right-inner">
             </div>
