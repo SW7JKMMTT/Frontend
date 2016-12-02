@@ -10,7 +10,9 @@
         "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
         "test-once": "tsc && karma start karma.conf.js --single-run",
         "tsc": "tsc",
-        "tsc:w": "tsc -w"
+        "tsc:w": "tsc -w",
+        "typings": "typings",
+        "postinstall": "typings install"
     },
     "author": "",
     "license": "GPL-2.0",
@@ -23,12 +25,15 @@
         "@angular/platform-browser": "~2.2.0",
         "@angular/platform-browser-dynamic": "~2.2.0",
         "@angular/router": "~3.2.0",
+        "@types/leaflet": "^1.0.37",
         "angular-in-memory-web-api": "~0.1.15",
         "systemjs": "0.19.40",
         "core-js": "^2.4.1",
         "reflect-metadata": "^0.1.8",
         "rxjs": "5.0.0-beta.12",
-        "zone.js": "^0.6.26"
+        "zone.js": "^0.6.26",
+        "leaflet": "^1.0.2",
+        "angular2.leaflet.components": "latest"
     },
     "devDependencies": {
         "concurrently": "^3.1.0",
