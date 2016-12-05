@@ -1,31 +1,34 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <base href="/">
-        <title>Frontend @ Truck NUTS</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/main.css">
 
-        <!-- Polyfill(s) for older browsers -->
-        <script src="node_modules/core-js/client/shim.min.js"></script>
-        <script src="node_modules/zone.js/dist/zone.js"></script>
-        <script src="node_modules/reflect-metadata/Reflect.js"></script>
-        <script src="node_modules/systemjs/dist/system.src.js"></script>
-        <script src="systemjs.config.js"></script>
-        <script>
-            System.config({
-                transpiler: 'typescript', 
-                typescriptOptions: { emitDecoratorMetadata: true },
-                map: {
-                    leaflet: 'https://unpkg.com/leaflet@1.0.1/dist/leaflet.js'
-                } 
-            });
-            System.import('app').catch(function(err){ console.error(err); });
-        </script>
-    </head>
+<head>
+    <title>Frontend @ Truck NUTS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
 
-    <body>
-        <nuts>Loading...</nuts>
-    </body>
+    <!-- Load the Angular Material 2 stylesheet -->
+    <link href="https://unpkg.com/@angular/material/core/theming/prebuilt/indigo-pink.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/hammerjs/hammer.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+</head>
+<base href="/">
+<!-- 3. Display the application -->
+
+<body>
+    <nuts>Loading...</nuts>
+</body>
+
 </html>

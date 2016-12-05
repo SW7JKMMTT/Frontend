@@ -1,10 +1,13 @@
 import { Router }                         from '@angular/router';
 import { Component, Input, OnChanges }    from '@angular/core';
-import { APIServices }                    from './api.services';
+import { APIServices }                    from '../Services/api.services';
 
 @Component({
-  templateUrl: "html/login.html",
-  providers: [APIServices],
+    moduleId: module.id.replace("/dist/", "/"),
+    selector: 'login',
+    providers: [ APIServices ],
+    templateUrl: 'login.component.html',
+    styleUrls: [ 'login.component.css' ]
 })
 
 export class LoginComponent { 

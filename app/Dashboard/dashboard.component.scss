@@ -1,5 +1,5 @@
-@import "_variables.scss";
-@import "_general.scss";
+@import "../Sass/_variables.scss";
+@import "../Sass/_general.scss";
 
 div.dashboard {
     height: 100%;
@@ -247,18 +247,6 @@ div.dashboard {
                     background-color: $bar_color;
                 }
             }
-        }
-
-
-        .main {
-            height: 100%;
-            width: 100%;
-
-            position: absolute;
-            left: $width * 1%;
-            width: $main * 1%;
-            float: left;
-            z-index: 1;
         }
     }
 }

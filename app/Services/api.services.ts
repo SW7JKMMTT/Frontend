@@ -13,7 +13,7 @@ export class APIServices {
     auth_token: RequestOptions;
 
     constructor(private http: Http) {
-        let url = "http://172.25.11.114:8080/services-1.0.0/";
+        let url = "http://sw708e16.cs.aau.dk/services-1.0.0/";
 
         let headers = new Headers({
             'Content-Type': 'application/json'
@@ -34,7 +34,6 @@ export class APIServices {
     }
 
     Login(username: string, password: string) {
-
         let parameters = JSON.stringify({
             "username": username,
             "password": password
@@ -43,8 +42,12 @@ export class APIServices {
         return this.http.post(this.url["login"], parameters, this.options);
     }
 
-    GetCurrentUser(){
+    GetCurrentUser() {
         return this.http.get(this.url["user"], this.auth_token);
+    }
+
+    GetUserIcon(userid) {
+        return this.url["user"] + "/" + userid + "/icon";
     }
 }
 

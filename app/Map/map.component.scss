@@ -1,0 +1,18 @@
+@import "../Sass/_variables.scss";
+@import "../Sass/_general.scss";
+
+.main {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: $width * 1%;
+    width: $main * 1%;
+    float: left;
+    z-index: 1;
+
+    .map-container {
+        width:100px;
+        height: 100px;
+    }
+}

@@ -1,20 +1,10 @@
-import { Router }                   from '@angular/router';
-import { Component }                from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
+    moduleId: module.id.replace("/dist/", "/"),
     selector: 'map',
-    providers: [],
-    templateUrl: "html/modules/_map.html",
+    templateUrl: 'map.component.html',
+    styleUrls: [ 'map.component.css' ]
 })
 
-export class MapComponent {
-    constructor(private router: Router)
-    {
-        if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
-            router.navigate(['login']);
-    }
-
-    ngOnInit()
-    {
-    }
-}
+export class MapComponent { }

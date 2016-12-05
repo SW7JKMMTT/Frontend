@@ -1,11 +1,13 @@
 import { Router }                   from '@angular/router';
 import { Component }                from '@angular/core';
-import { APIServices }              from './api.services';
+import { APIServices }              from '../Services/api.services';
 
 @Component({
-  selector: 'dashboard',
-  providers: [APIServices],
-  templateUrl: "html/dashboard.html",
+    moduleId: module.id.replace("/dist/", "/"),
+    selector: 'dashboard',
+    providers: [APIServices],
+    templateUrl: 'dashboard.component.html',
+    styleUrls: [ 'dashboard.component.css' ]
 })
 
 

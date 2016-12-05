@@ -1,13 +1,13 @@
 import { Router }      from '@angular/router';
 import { Component }   from '@angular/core';
-import { APIServices } from '../api.services';
+import { APIServices } from '../Services/api.services';
 
 @Component({
-    moduleId: module.id.replace("/build/", "/app/"),
+    moduleId: module.id.replace("/dist/", "/"),
     selector: 'profile-info',
     providers: [APIServices],
-    templateUrl: 'ProfileInfo.html',
-    styleUrls: [ 'ProfileInfo.css' ]
+    templateUrl: 'ProfileInfo.component.html',
+    styleUrls: [ 'ProfileInfo.component.css' ]
 })
 
 export class ProfileInfo {
@@ -23,21 +23,21 @@ export class ProfileInfo {
 
         APIServices.GetCurrentUser().subscribe(
             data => {
-                let data2 = data.json();
+                let person = data.json();
 
-                for (var i=0; i < data2.length; i++) {
-                    if(data2[i].id == localStorage.getItem("user")) {
-                        this.firstname = data2[i].givenname;
-                        this.surname = data2[i].surname;
-                        this.hasIcon = data2[i].hasIcon;
+                for (var i=0; i < person.length; i++) {
+                    if(person[i].id == localStorage.getItem("user")) {
+                        console.log(person[i].hasIcon);
 
-                        if(data2[i].permissions.length > 0)
-                            this.position = data2[i].permissions[0].permission;
+                        this.firstname = person[i].givenname;
+                        this.surname = person[i].surname;
+                        this.hasIcon = person[i].hasIcon;
+
+                        if(person[i].permissions.length > 0)
+                            this.position = person[i].permissions[0].permission;
 
                         if(this.hasIcon)
-                            this.profile_image = 'assets/images/profile.jpg';
-
-                        console.log(data2[i]);
+                            this.profile_image = APIServices.GetUserIcon(person[i].id);
                     }
                 }
             },
