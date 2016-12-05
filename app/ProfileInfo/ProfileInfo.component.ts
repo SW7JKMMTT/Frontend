@@ -20,8 +20,11 @@ export class ProfileInfo {
     constructor(private APIServices: APIServices, private router: Router) {
         if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
             router.navigate(['login']);
+    }
 
-        APIServices.GetCurrentUser().subscribe(
+    ngOnInit()
+    {
+        this.APIServices.GetCurrentUser().subscribe(
             data => {
                 let person = data.json();
 
@@ -37,7 +40,7 @@ export class ProfileInfo {
                             this.position = person[i].permissions[0].permission;
 
                         if(this.hasIcon)
-                            this.profile_image = APIServices.GetUserIcon(person[i].id);
+                            this.profile_image = this.APIServices.GetUserIcon(person[i].id);
                     }
                 }
             },

@@ -14,6 +14,8 @@ export class APIServices {
 
     constructor(private http: Http) {
         let url = "http://sw708e16.cs.aau.dk/services-1.0.0/";
+        //let url = "http://172.25.11.114:8080/services-1.0.0/";
+
 
         let headers = new Headers({
             'Content-Type': 'application/json'
@@ -27,6 +29,7 @@ export class APIServices {
         this.url = {
             "login": url+"auth",
             "user": url+"user",
+            "route": url+"route"
         }
 
         this.options = new RequestOptions({ headers: headers });
@@ -48,6 +51,16 @@ export class APIServices {
 
     GetUserIcon(userid) {
         return this.url["user"] + "/" + userid + "/icon";
+    }
+
+    GetActiveRoutes() {
+        //return this.http.get(this.url["route"]+"?state=CREATED", this.auth_token);
+        //return this.http.get(this.url["route"]+"?state=ACTIVE", this.auth_token);
+        return this.http.get(this.url["route"], this.auth_token);
+    }
+
+    GetRouteWaypoints(route_id) {
+        return this.http.get(this.url["route"]+"/" + route_id + "/waypoint", this.auth_token);
     }
 }
 
