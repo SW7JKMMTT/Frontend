@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from '@angular/material';
-import { CandTLeafletComponent } from 'angular2.leaflet.components';
-import { CandTLeafletService } from 'angular2.leaflet.components';
 import { RouterModule, Routes } from '@angular/router';
+import { CandTLeafletComponent, CandTLeafletService } from 'angular2.leaflet.components';
 
 import { FormsModule, ReactiveFormsModule }  from '@angular/forms';
 
