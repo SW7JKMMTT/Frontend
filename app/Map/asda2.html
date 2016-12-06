@@ -1,0 +1,10 @@
+    <leaf-element [zoom]=16 [layerControl]=true [lat]=57.012048 [lon]=9.991264>
+        <layer-element [name]="'openstreetmap'" [type]="'basemap'" [slippyLayer]="'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'"></layer-element>
+        
+        <line-element></line-element>
+
+        <leaflet-group>
+            <marker-element [iconUrl]="'http://127.0.0.1:3000/custom-marker.png'" [lat]=57.012048 [lon]=9.991264 [onclick]="'custom icon'"></marker-element>
+            <marker-element [iconUrl]="'http://127.0.0.1:3000/custom-marker.png'" [lat]=57.018492 [lon]=9.992230 [onclick]="'custom icon'"></marker-element>
+        </leaflet-group>
+    </leaf-element>
