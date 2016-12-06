@@ -17,3 +17,8 @@
             user-select: none; /* Non-prefixed version, currently
                                   not supported by any browser */
 }
+
+html, body, login {
+    height: 100%;
+    width: 100%;
+}

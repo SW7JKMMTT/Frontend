@@ -1,50 +1,34 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>TruckNation</title>
 
-        <!-- Custom styles for this template -->
-        <link href="main.css" rel="stylesheet">
-    </head>
-    <body class="login">
-        <div class="login-title">
-            <h1>TruckNation</h1>
-        </div>
+<head>
+    <title>Frontend @ Truck NUTS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
 
-        <div class="login-container">
-            <div class="form">
-                <h2>Login to your account</h2>
+    <!-- Load the Angular Material 2 stylesheet -->
+    <link href="https://unpkg.com/@angular/material/core/theming/prebuilt/indigo-pink.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-                <div class="login-message error">
-                    <p>Error</p>
-                </div>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/hammerjs/hammer.js"></script>
 
-                <!--
-                <div class="login-message warning">
-                    <p>Warning</p>
-                </div>
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+</head>
+<base href="/">
+<!-- 3. Display the application -->
 
-                <div class="login-message success">
-                    <p>Success</p>
-                </div>
+<body>
+    <nuts>Loading...</nuts>
+</body>
 
-                <div class="login-message info">
-                    <p>Info</p>
-                </div>
-                -->
-
-                <form class="login-form" method="POST">
-                    <input type="text" name="username" placeholder="Username" />
-                    <input type="password" name="password" placeholder="Password" />
-                    <input type="submit" value="Login" />
-                </form>
-            </div>
-        </div>
-
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="app2.js"></script>
-    </body>
 </html>

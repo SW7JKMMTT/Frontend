@@ -1,7 +1,10 @@
-@import "_variables.scss";
-@import "_general.scss";
+@import "../Sass/_variables.scss";
+@import "../Sass/_general.scss";
 
-body.login {
+div.login {
+    height: 100%;
+    width: 100%;
+
     background-color: $mercury;
 
     .login-title {
@@ -32,8 +35,6 @@ body.login {
 
                 font-size: 13px;
                 font-weight: bold;
-
-                display: none;
 
                 &.error {
                     background-color: $error_bg;
