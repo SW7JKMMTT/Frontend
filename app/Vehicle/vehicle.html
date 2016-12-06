@@ -1,0 +1,15 @@
+<div class="staff-container">
+    <div *ngFor="let vehicle of vehicles | async">
+        <div class="vehicle noselect" data-lat="56.162939" data-lon="10.203921">
+            <div class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)">
+                <div class="driver-pic"></div>
+            </div>
+            <div class="vehicle-text">
+                <p class="vehicle-name">{{ vehicle.make }} {{ vehicle.model }}</p>
+                <p class="vehicle-vintage">Vintage: {{ vehicle.vintage }}</p>
+                <p class="vehicle-status">Status: ???</p>
+                <p class="driver-name">Walter White &nbsp;</p>
+            </div>
+        </div>
+    </div>
+</div>

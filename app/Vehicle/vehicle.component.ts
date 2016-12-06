@@ -5,22 +5,22 @@ import { Observable }    from 'rxjs/Observable';
 
 @Component({
     moduleId: module.id.replace("/dist/", "/"),
-    selector: 'staff-container',
+    selector: 'vehicle-container',
     providers: [ APIServices ],
-    templateUrl: 'staff.html',
-    styleUrls: [ 'staff.css' ]
+    templateUrl: 'vehicle.html',
+    styleUrls: [ 'vehicle.css' ]
 })
 
-export class StaffBlock {
+export class VehicleBlock {
     constructor(private APIServices: APIServices, private router: Router) {
         if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
             router.navigate(['login']);
     }
 
-    private users:any = new Observable(observer => {
-        this.APIServices.GetAllUsers().subscribe(
-            users => { 
-                observer.next(users.json()); 
+    private vehicles:any = new Observable(observer => {
+        this.APIServices.GetAllVehicles().subscribe(
+            vehicles => { 
+                observer.next(vehicles.json()); 
             }
         );
     });

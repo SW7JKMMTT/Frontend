@@ -36,7 +36,8 @@ export class APIServices {
         this.url = {
             'login': url+'auth',
             'user': url+'user',
-            'route': url+'route'
+            'route': url+'route',
+            'vehicle': url+'vehicle'
         }
 
         this.options = new RequestOptions({ headers: headers });
@@ -57,8 +58,12 @@ export class APIServices {
         return this.http.get(this.url['user'], this.auth_token).map((res) => res.json());
     }
     
-    GetCurrentUserRaw() {
+    GetAllUsers() {
         return this.http.get(this.url['user'], this.auth_token);
+    }
+
+    GetAllVehicles() {
+        return this.http.get(this.url['vehicle'], this.auth_token);
     }
 
     GetUserIcon(userid) {

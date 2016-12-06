@@ -11,7 +11,9 @@ import { LoginComponent } from './Login/login.component';
 import { LogoutComponent } from './Logout/logout.component';
 import { DashboardComponent } from './Dashboard/dashboard.component';
 import { ProfileInfo } from './ProfileInfo/ProfileInfo.component';
-import { StaffBlock } from './Staff/Staff.component';
+import { StaffBlock } from './Staff/staff.component';
+import { VehicleBlock } from './vehicle/vehicle.component';
+
 
 
 import { MapComponent } from './Map/Map.component';
@@ -26,7 +28,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [BrowserModule, MaterialModule.forRoot(), RouterModule.forRoot(appRoutes), FormsModule],
-    declarations: [AppComponent, MapComponent, LineElement, CandTLeafletComponent, LoginComponent, LogoutComponent, DashboardComponent, ProfileInfo, StaffBlock ],
+    declarations: [AppComponent, MapComponent, LineElement, CandTLeafletComponent, LoginComponent, LogoutComponent, DashboardComponent, ProfileInfo, StaffBlock, VehicleBlock ],
     providers: [ CandTLeafletService ],
     bootstrap: [ AppComponent ]
 })
