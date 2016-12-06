@@ -1,4 +1,5 @@
 /dist/*
+/typings/*
 /node_modules/*
 
 /app/*/*.css

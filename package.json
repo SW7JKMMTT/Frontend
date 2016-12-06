@@ -1,7 +1,11 @@
 {
     "name": "TruckNUTS",
     "version": "1.0.0",
-    "description": "",
+    "description": "description INC",
+     "repository": {
+        "type": "git",
+        "url": "https://github.com/SW7JKMMTT/Frontend"
+    },
     "scripts": {
         "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
         "lite": "lite-server",
