@@ -1,21 +1,22 @@
 import { Router }      from '@angular/router';
 import { Component }   from '@angular/core';
 import { APIServices } from '../Services/api.services';
+import { Observable }    from 'rxjs/Observable';
 
 @Component({
     moduleId: module.id.replace("/dist/", "/"),
     selector: 'profile-info',
     providers: [APIServices],
-    templateUrl: 'ProfileInfo.component.html',
-    styleUrls: [ 'ProfileInfo.component.css' ]
+    templateUrl: 'ProfileInfo.html',
+    styleUrls: [ 'ProfileInfo.css' ]
 })
 
 export class ProfileInfo {
-    firstname = '';
-    surname = '';
-    position = '';
-    profile_image = '';
-    hasIcon = false;
+    firstname : string = '';
+    surname : string = '';
+    position : string = '';
+    profileImage : string = '';
+    hasIcon : boolean = false;
 
     constructor(private APIServices: APIServices, private router: Router) {
         if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
@@ -26,27 +27,24 @@ export class ProfileInfo {
     {
         this.APIServices.GetCurrentUser().subscribe(
             data => {
-                let person = data.json();
+                for (var i=0; i < data.length; i++) {
+                    if(data[i].id == localStorage.getItem("user")) {
+                        this.firstname = data[i].givenname;
+                        this.surname = data[i].surname;
+                        this.hasIcon = data[i].hasIcon;
 
-                for (var i=0; i < person.length; i++) {
-                    if(person[i].id == localStorage.getItem("user")) {
-                        console.log(person[i].hasIcon);
-
-                        this.firstname = person[i].givenname;
-                        this.surname = person[i].surname;
-                        this.hasIcon = person[i].hasIcon;
-
-                        if(person[i].permissions.length > 0)
-                            this.position = person[i].permissions[0].permission;
+                        if(data[i].permissions.length > 0)
+                            this.position = data[i].permissions[0].permission;
 
                         if(this.hasIcon)
-                            this.profile_image = this.APIServices.GetUserIcon(person[i].id);
+                            this.APIServices.GetUserIcon(data[i].id).subscribe(
+                                data => {
+                                    let imageData = data["_body"].replace(/(\r\n|\n|\r)/gm,"");
+
+                                    this.profileImage = imageData;
+                                })
                     }
                 }
-            },
-            error => {
-                error = error.json();
-                console.log(error);
             }
         )
     }

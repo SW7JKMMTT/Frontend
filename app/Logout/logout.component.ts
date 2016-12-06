@@ -6,7 +6,7 @@ import { APIServices }                    from '../Services/api.services';
     moduleId: module.id.replace("/dist/", "/"),
     selector: 'logout',
     providers: [ APIServices ],
-    templateUrl: 'logout.component.html',
+    templateUrl: 'logout.html',
 })
 
 export class LogoutComponent { 

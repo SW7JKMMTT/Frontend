@@ -6,8 +6,8 @@ import { APIServices }                    from '../Services/api.services';
     moduleId: module.id.replace("/dist/", "/"),
     selector: 'login',
     providers: [ APIServices ],
-    templateUrl: 'login.component.html',
-    styleUrls: [ 'login.component.css' ]
+    templateUrl: 'login.html',
+    styleUrls: [ 'login.css' ]
 })
 
 export class LoginComponent { 

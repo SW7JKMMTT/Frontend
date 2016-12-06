@@ -6,8 +6,8 @@ import { APIServices }              from '../Services/api.services';
     moduleId: module.id.replace("/dist/", "/"),
     selector: 'dashboard',
     providers: [APIServices],
-    templateUrl: 'dashboard.component.html',
-    styleUrls: [ 'dashboard.component.css' ]
+    templateUrl: 'dashboard.html',
+    styleUrls: [ 'dashboard.css' ]
 })
 
 

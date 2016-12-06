@@ -3,6 +3,7 @@
 
 .profile-info {
     width: 100%;
+    height: 110px;
 
     display: inline-flex;
 
@@ -41,6 +42,15 @@
             order: 1;
             font-size: 9pt;
             font-weight: 300;
+
+            a {
+                color: $white;
+                text-decoration: none;
+
+                &:hover {
+                    border-bottom: 1px dotted $white;
+                }
+            }
         }
     }
 }

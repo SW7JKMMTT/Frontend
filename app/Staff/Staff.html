@@ -1,0 +1,14 @@
+<div class="staff-container">
+    <div *ngFor="let user of users | async">
+        <div class="staff noselect">
+            <div class="staff-pic" style="background-image: url(assets/images/profile.jpg)">
+                <div class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)"></div>
+            </div>
+            <div class="staff-text">
+                <p class="staff-name">{{ user.givenname }} {{ user.surname }}</p>
+                <p class="staff-username">{{ user.username }}</p>
+                <p class="staff-status">Status: Parked</p>
+            </div>
+        </div>
+    </div>
+</div>
