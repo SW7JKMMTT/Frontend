@@ -30,7 +30,6 @@ export class PolylineElement {
         iconSize: [16, 16],
     });
 
-
     constructor(private MapService : MapService, @Optional() private MapComponent?: MapComponent){}
 
     ngOnInit(){
@@ -64,7 +63,7 @@ export class PolylineElement {
 
             map.removeLayer(this.polyline);
 
-            this.polyline = new L.polyline(this.route, null);
+            this.polyline = new L.polyline(this.route, {color: "#FF69B4", weight: 7});
             this.polyline.addTo(map);
 
             if(this.route.length > 0){
@@ -78,7 +77,7 @@ export class PolylineElement {
 
                 let lastIndex = this.route.length - 1;
 
-                map.setView([this.route[lastIndex][0], this.route[lastIndex][1]]);
+                //map.setView([this.route[lastIndex][0], this.route[lastIndex][1]]);
 
                 this.car = new L.marker([this.route[lastIndex][0], this.route[lastIndex][1]], {icon: this.new_icon}).on('click', function() { alert('JA'); } );
                 this.car.addTo(map);

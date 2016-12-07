@@ -67,7 +67,7 @@ export class APIServices {
     }
 
     GetWaypoints(RouteID, timestamp) {
-        if(timestamp == null){
+        if(timestamp == 0){
             return this.http.get(this.url['route'] + "/" + RouteID + "/waypoint", this.auth_token);
         }
         return this.http.get(this.url['route'] + "/" + RouteID + "/waypoint?byRoute_after=" + timestamp, this.auth_token);

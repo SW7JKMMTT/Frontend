@@ -1,3 +1,3 @@
 <div class="main" #truckster_map>
-    <route routeID="154894"></route>
+    <route *ngFor="let route of routes" routeID="{{ route }}"></route>
 </div>

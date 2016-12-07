@@ -18,10 +18,7 @@ export class RouteElement {
     constructor(private APIServices: APIServices){}
 
     ngOnInit(){
-        IntervalObservable.create(500).subscribe((x) => {
-            this.updateRoute();
-        });
-
+        this.updateRoute();
     }
 
     updateRoute(){
@@ -36,6 +33,10 @@ export class RouteElement {
 
                 this.route.push([waypoint.latitude, waypoint.longitude]);
             }
+
+            setTimeout(() => {
+               this.updateRoute();
+            }, 5000);
         });
     }
 }
