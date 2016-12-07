@@ -20,8 +20,8 @@ import { VehicleBlock }         from './Vehicle/vehicle.component';
 import { DriverBlock }          from './Driver/driver.component';
 
 import { MapComponent }         from './Map/Map.component';
-import { RouteElement }         from './Map/Route.component';
-import { PolylineElement }      from './Map/Polyline.component';
+import { RouteElement }         from './Route/Route.component';
+import { PolylineElement }      from './Polyline/Polyline.component';
 
 const appRoutes: Routes = [
                 { path: '', component: LoginComponent },
