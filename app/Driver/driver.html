@@ -1,0 +1,15 @@
+<div class="staff noselect">
+    <div *ngIf="user.hasIcon" class="staff-pic" [ngStyle]="{'background-image': 'url(data:image/png;base64,' + userIcon + ')'}">
+        <div *ngIf="isDriving" class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)"></div>
+    </div>
+    <div *ngIf="!user.hasIcon" class="staff-pic">
+        <div *ngIf="isDriving" class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)"></div>
+    </div>
+
+    <div class="staff-text">
+        <p class="staff-name">{{ user.givenname }} {{ user.surname }}</p>
+        <p class="staff-username">{{ user.username }}</p>
+        <p *ngIf="isDriving" class="staff-status">Status: Driving</p>
+        <p *ngIf="!isDriving" class="staff-status">Status: Parked</p>
+    </div>
+</div>

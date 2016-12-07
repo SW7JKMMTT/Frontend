@@ -1,7 +1,9 @@
 import { Router }      from '@angular/router';
 import { Component }   from '@angular/core';
-import { APIServices } from '../Services/api.services';
 import { Observable }    from 'rxjs/Observable';
+import { APIServices } from '../Services/api.services';
+import { IconService } from '../Services/icon.service';
+import { EmitterService } from '../Services/emitter.service';
 
 @Component({
     moduleId: module.id.replace("/dist/", "/"),
