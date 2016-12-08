@@ -6,7 +6,7 @@ import { IconService } from '../Services/icon.service';
 import { EmitterService } from '../Services/emitter.service';
 
 @Component({
-    moduleId: module.id.replace("/dist/", "/"),
+    moduleId: module.id.replace("/dist/", "/app/"),
     selector: 'profile-info',
     providers: [APIServices],
     templateUrl: 'ProfileInfo.html',

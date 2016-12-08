@@ -3,7 +3,7 @@ import { Component, Input, OnChanges }    from '@angular/core';
 import { APIServices }                    from '../Services/api.services';
 
 @Component({
-    moduleId: module.id.replace("/dist/", "/"),
+    moduleId: module.id.replace("/dist/", "/app/"),
     selector: 'login',
     providers: [ APIServices ],
     templateUrl: 'login.html',

@@ -9,7 +9,7 @@ import { ListService } from '../Services/lists.service';
 import { EmitterService } from '../Services/emitter.service';
 
 @Component({
-    moduleId: module.id.replace("/dist/", "/"),
+    moduleId: module.id.replace("/dist/", "/app/"),
     selector: 'driver',
     providers: [ APIServices, IconService ],
     templateUrl: 'driver.html',

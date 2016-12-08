@@ -12,7 +12,7 @@
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
-      app: 'dist/app',
+      app: 'dist',
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -27,7 +27,6 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       '@angular/material': 'npm:@angular/material/material.umd.js',
       'leaflet': 'npm:leaflet',
-      'angular2.leaflet.components': 'npm:angular2.leaflet.components',
       //typescript
       "ts": "npm:plugin-typescript/lib/",
       "typescript": "npm:typescript/lib/"

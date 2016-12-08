@@ -66,25 +66,34 @@ export class APIServices {
         return this.http.get(this.url['vehicle'], this.auth_token);
     }
 
+    GetVehicleInfo(VehicleID) {
+        return this.http.get(this.url['vehicle']+'/'+VehicleID, this.auth_token);
+    }
+
+    GetVehicleIcon(VehicleID) {
+        return this.http.get(this.url['vehicle']+'/'+VehicleID+'/icon', this.image_headers);
+    }
+
     GetWaypoints(RouteID, timestamp) {
-        if(timestamp == 0){
-            return this.http.get(this.url['route'] + "/" + RouteID + "/waypoint", this.auth_token);
-        }
-        return this.http.get(this.url['route'] + "/" + RouteID + "/waypoint?byRoute_after=" + timestamp, this.auth_token);
+        if(timestamp == 0)
+            return this.http.get(this.url['route']+'/'+RouteID+'/waypoint', this.auth_token);
+        return this.http.get(this.url['route']+'/'+RouteID+'/waypoint?byRoute_after='+timestamp, this.auth_token);
+    }
+
+    GetRouteData(RouteID){
+        return this.http.get(this.url['route']+'/'+RouteID, this.auth_token);
     }
 
     GetUserIcon(userid) {
-        return this.http.get(this.url['user'] + '/' + userid + '/icon', this.image_headers);
+        return this.http.get(this.url['user']+'/'+userid+'/icon', this.image_headers);
     }
 
     GetActiveRoutes() {
-        //return this.http.get(this.url['route']+'?state=CREATED', this.auth_token);
         return this.http.get(this.url['route']+'?state=ACTIVE', this.auth_token);
-        //return this.http.get(this.url['route'], this.auth_token);
     }
 
-    GetRouteWaypoints(route_id) {
-        return this.http.get(this.url['route']+'/' + route_id + '/waypoint', this.auth_token);
+    GetRouteWaypoints(RouteID) {
+        return this.http.get(this.url['route']+'/'+RouteID+'/waypoint', this.auth_token);
     }
 }
 

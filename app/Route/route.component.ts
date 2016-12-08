@@ -4,7 +4,7 @@ import { APIServices }        from '../Services/api.services';
 
 
 @Component({
-    moduleId: module.id.replace("/dist/", "/"),
+    moduleId: module.id.replace("/dist/", "/app/"),
     providers: [ APIServices ],
     selector: 'route',
     templateUrl: 'route.html',
@@ -13,6 +13,8 @@ import { APIServices }        from '../Services/api.services';
 export class RouteElement {
     @Input() routeID: number = 0;
     private lastTimestamp : number = 0;
+    private isComplete : boolean = false;
+    private vehicleID : number = 0;
     private route = [];
 
     constructor(private APIServices: APIServices){}
@@ -22,17 +24,25 @@ export class RouteElement {
     }
 
     updateRoute(){
-        this.APIServices.GetWaypoints(this.routeID, this.lastTimestamp).subscribe(data => {
-            data.json().forEach((waypoint, index) => {
-                if(waypoint.timestamp > this.lastTimestamp)
-                    this.lastTimestamp = waypoint.timestamp;
-
-                this.route.push([waypoint.latitude, waypoint.longitude]);
-            });
-
-            setTimeout(() => {
-               this.updateRoute();
-            }, 5000);
+        this.APIServices.GetRouteData(this.routeID).subscribe(data => {
+            let route_data = data.json();
+            this.isComplete = route_data["routeState"] == "COMPLETE";
+            this.vehicleID = route_data["vehicle"];
         });
+        
+        if(!this.isComplete){
+            this.APIServices.GetWaypoints(this.routeID, this.lastTimestamp).subscribe(data => {
+                data.json().forEach((waypoint, index) => {
+                    if(waypoint.timestamp > this.lastTimestamp)
+                        this.lastTimestamp = waypoint.timestamp;
+
+                    this.route.push([waypoint.latitude, waypoint.longitude]);
+                });
+
+                setTimeout(() => {
+                   this.updateRoute();
+                }, 5000);
+            });
+        }
     }
 }

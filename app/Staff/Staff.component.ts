@@ -4,7 +4,7 @@ import { APIServices }     from '../Services/api.services';
 import { Observable }      from 'rxjs/Observable';
 
 @Component({
-    moduleId: module.id.replace("/dist/", "/"),
+    moduleId: module.id.replace("/dist/", "/app/"),
     selector: 'staff-container',
     providers: [ APIServices ],
     templateUrl: 'staff.html',

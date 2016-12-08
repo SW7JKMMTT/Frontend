@@ -3,7 +3,7 @@ import { Component }                from '@angular/core';
 import { APIServices }              from '../Services/api.services';
 
 @Component({
-    moduleId: module.id.replace("/dist/", "/"),
+    moduleId: module.id.replace("/dist/", "/app/"),
     selector: 'dashboard',
     providers: [APIServices],
     templateUrl: 'dashboard.html',

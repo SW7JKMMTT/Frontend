@@ -10,7 +10,7 @@ var Lealflet = require('leaflet');
 declare var L: any;
 
 @Component({
-    moduleId: module.id.replace("/dist/", "/"),
+    moduleId: module.id.replace("/dist/", "/app/"),
     selector: 'map',
     providers: [ APIServices ],
     templateUrl: 'map.html',
@@ -85,14 +85,12 @@ export class MapComponent {
 
     mapStopped(){
         let map = this.MapService.getMap();
-        console.log(map.getZoom());
     }
 
     mapMoved(){
         //console.log(this.map.getCenter());
         //console.log(this.map.getBounds());
         this.shouldZoom = false;
-        console.log("update?");
     }
 
     updateRoutes(){
