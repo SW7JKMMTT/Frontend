@@ -23,13 +23,7 @@ export class RouteElement {
 
     updateRoute(){
         this.APIServices.GetWaypoints(this.routeID, this.lastTimestamp).subscribe(data => {
-            if(this.route.length == 0){
-                let datapoints = data.json();
-            }else{
-                let datapoints = data.json().reverse();
-            }
-
-            datapoints.forEach((waypoint, index) => {
+            data.json().forEach((waypoint, index) => {
                 if(waypoint.timestamp > this.lastTimestamp)
                     this.lastTimestamp = waypoint.timestamp;
 
