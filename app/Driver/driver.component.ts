@@ -1,4 +1,3 @@
-import { Router }      from '@angular/router';
 import { Component, Input }   from '@angular/core';
 import { Observable }    from 'rxjs/Observable';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
@@ -21,10 +20,7 @@ export class DriverBlock {
     userIcon : string = "";
     isDriving : boolean = false;
 
-    constructor(private APIServices: APIServices, private IconService: IconService, private ListService : ListService, private router: Router) {
-        if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
-            router.navigate(['login']);
-    }
+    constructor(private APIServices: APIServices, private IconService: IconService, private ListService : ListService) {}
 
     ngOnInit(){
         this.updateUsers();
@@ -49,7 +45,6 @@ export class DriverBlock {
 
         if(this.user.hasIcon)
             this.IconService.GetIcon(this.user.id);
-
     }
 
     ngOnChanges() {

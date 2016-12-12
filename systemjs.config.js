@@ -27,9 +27,10 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       '@angular/material': 'npm:@angular/material/material.umd.js',
       'leaflet': 'npm:leaflet',
+      'ng2-haversine': 'npm:ng2-haversine',
       //typescript
-      "ts": "npm:plugin-typescript/lib/",
-      "typescript": "npm:typescript/lib/"
+      'ts': 'npm:plugin-typescript/lib/',
+      'typescript': 'npm:typescript/lib/'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -44,13 +45,6 @@
         main: './index.js',
         defaultExtension: 'js'
       },
-      'angular2.leaflet.components': {
-        main: './index',
-        defaultExtension: 'js',
-        meta: {
-          "format": "register"
-        }
-      },
       'leaflet': {
         main: './dist/leaflet.js',
         defaultExtension: 'js',
@@ -58,14 +52,18 @@
           './dist/leaflet.css': { loader: 'css' }
         }
       },
-      "ts": {
-        "main": "plugin.js"
+      'ng2-haversine': {
+          main: './index.js',
+          defaultExtension: 'js'
       },
-      "typescript": {
-        "main": "typescript.js",
-        "meta": {
-          "lib/typescript.js": {
-            "exports": "ts"
+      'ts': {
+        'main': 'plugin.js'
+      },
+      'typescript': {
+        'main': 'typescript.js',
+        'meta': {
+          'lib/typescript.js': {
+            'exports': 'ts'
           }
         }
       }

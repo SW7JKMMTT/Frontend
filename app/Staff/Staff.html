@@ -1,5 +1,6 @@
 <div class="staff-container">
-    <div *ngFor="let user of users | async">
-        <driver [user]=user ></driver>
+    <p *ngIf="isEmpty">Loading...</p>
+    <div *ngIf="!isEmpty">
+        <driver [user]="staffmember" *ngFor="let staffmember of staff"></driver>
     </div>
 </div>

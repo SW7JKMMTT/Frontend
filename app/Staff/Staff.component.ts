@@ -1,6 +1,6 @@
-import { Router }          from '@angular/router';
 import { Component }       from '@angular/core';
 import { APIServices }     from '../Services/api.services';
+import { ListService }     from '../Services/lists.service';
 import { Observable }      from 'rxjs/Observable';
 
 @Component({
@@ -12,16 +12,23 @@ import { Observable }      from 'rxjs/Observable';
 })
 
 export class StaffBlock {
-    constructor(private APIServices: APIServices, private router: Router) {
-        if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
-            router.navigate(['login']);
+    private staff : Array<any> = [];
+    private isEmpty : boolean = true;
+
+    constructor(private APIServices: APIServices, private ListService : ListService) {}
+
+    ngOnInit(){
+        this.updateUsers();
     }
 
-    private users:any = new Observable(observer => {
-        this.APIServices.GetAllUsers().subscribe(
-            users => { 
-                observer.next(users.json()); 
-            }
-        );
-    });
+    updateUsers(){
+        if (this.ListService.users != this.staff)
+            this.staff = this.ListService.users;
+
+        this.isEmpty = this.ListService.users.length == 0;
+
+        setTimeout(() => {
+            this.updateUsers();
+        }, 1000);
+    }
 }

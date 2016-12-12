@@ -62,6 +62,10 @@ export class APIServices {
         return this.http.get(this.url['user'], this.auth_token);
     }
 
+    GetUserIcon(userid) {
+        return this.http.get(this.url['user']+'/'+userid+'/icon', this.image_headers);
+    }
+
     GetAllVehicles() {
         return this.http.get(this.url['vehicle'], this.auth_token);
     }
@@ -84,8 +88,8 @@ export class APIServices {
         return this.http.get(this.url['route']+'/'+RouteID, this.auth_token);
     }
 
-    GetUserIcon(userid) {
-        return this.http.get(this.url['user']+'/'+userid+'/icon', this.image_headers);
+    GetRouteWithinArea(lat, lng, radius){
+        return this.http.get(this.url['route']+'?latitude='+lat+'&longitude='+lng+'&radius='+radius+'&state=ACTIVE', this.auth_token);
     }
 
     GetActiveRoutes() {
