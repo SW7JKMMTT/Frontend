@@ -1,0 +1,6 @@
+<div class="staff-container">
+    <p *ngIf="isEmpty">Loading...</p>
+    <div *ngIf="!isEmpty">
+        <vehicle [vehicleData]="vehicle" *ngFor="let vehicle of vehicles"></vehicle>
+    </div>
+</div>

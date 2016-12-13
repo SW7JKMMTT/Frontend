@@ -1,4 +1,4 @@
-<div class="staff noselect">
+<div class="staff noselect" (click)="clicked()">
     <div *ngIf="user.hasIcon" class="staff-pic" [ngStyle]="{'background-image': 'url(data:image/png;base64,' + userIcon + ')'}">
         <div *ngIf="isDriving" class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)"></div>
     </div>

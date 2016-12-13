@@ -21,6 +21,8 @@ export class PolylineElement {
     incomplete : string = "#FF69B4";
     complete : string = "#FF0000";
     isIconSet : boolean = false;
+    divisor : number = 0;
+    oldLength : number = 0;
 
     @Input() route : Array<Array<number>> = [];
     @Input() isComplete : boolean = false;
@@ -29,7 +31,7 @@ export class PolylineElement {
     new_icon = L.icon({
         iconUrl: "assets/images/Truck_Yellow.png",
         iconSize: [42, 42],
-        iconAnchor: [32, 44],
+        iconAnchor: [21, 21],
     });
 
     start_icon = L.icon({
@@ -73,13 +75,24 @@ export class PolylineElement {
     ngDoCheck(inputChanges){
         let same = true;
         let cur_cords = this.polyline.getLatLngs();
-        
-        if(this.route.length != cur_cords.length){
-            let map = this.MapService.getMap();
+        let map = this.MapService.getMap();
+        let divisor = (map.getMaxZoom() - map.getZoom()) + 4;
+        let lastIndex = this.route.length - 1;
+        let curSpot = 0;
 
+        if(this.oldLength != this.route.length || this.divisor != divisor){
             map.removeLayer(this.polyline);
 
-            this.polyline = new L.polyline(this.route, {color: this.incomplete, weight: 7});
+            let locRoute = [];
+            for(var i = 0; i < this.route.length; i += divisor){
+                locRoute.push(this.route[i]);
+                curSpot = i;
+            }
+            if(curSpot != lastIndex && lastIndex > 0)
+                locRoute.push(this.route[lastIndex]);
+
+
+            this.polyline = new L.polyline(locRoute, {color: this.incomplete, weight: 7});
             this.polyline.addTo(map);
 
             if(this.route.length > 0){
@@ -91,10 +104,6 @@ export class PolylineElement {
                 if(this.isStarted)
                     map.removeLayer(this.car);
 
-                let lastIndex = this.route.length - 1;
-
-                //map.setView([this.route[lastIndex][0], this.route[lastIndex][1]]);
-
                 this.car = new L.marker([this.route[lastIndex][0], this.route[lastIndex][1]], {icon: this.new_icon}).on('click', () => {
                     this.truck_click();
                 });
@@ -104,12 +113,14 @@ export class PolylineElement {
             }
         }
 
+        this.divisor = divisor;
+        this.oldLength = this.route.length;
+
         this.updateIcon();
         this.endRoute();
     }
 
     truck_click(){
-        console.log(this.isComplete);
         console.log("TRUCK CLICK!");
     }
 

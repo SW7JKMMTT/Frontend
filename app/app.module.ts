@@ -15,7 +15,8 @@ import { LogoutComponent }                      from './Logout/logout.component'
 import { DashboardComponent }                   from './Dashboard/dashboard.component';
 import { ProfileInfo }                          from './ProfileInfo/ProfileInfo.component';
 import { StaffBlock }                           from './Staff/staff.component';
-import { VehicleBlock }                         from './Vehicle/vehicle.component';
+import { VehiclesBlock }                        from './Vehicles/vehicles.component';
+import { VehicleComponent }                     from './Vehicle/vehicle.component';
 import { DriverBlock }                          from './Driver/driver.component';
 import { MapComponent }                         from './Map/Map.component';
 import { RouteElement }                         from './Route/Route.component';
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [BrowserModule, MaterialModule.forRoot(), RouterModule.forRoot(appRoutes), FormsModule],
-    declarations: [AppComponent, MapComponent, PolylineElement, RouteElement, LoginComponent, LogoutComponent, DashboardComponent, ProfileInfo, StaffBlock, VehicleBlock, DriverBlock ],
+    declarations: [AppComponent, MapComponent, PolylineElement, RouteElement, LoginComponent, LogoutComponent, DashboardComponent, ProfileInfo, StaffBlock, VehiclesBlock, VehicleComponent, DriverBlock ],
     providers: [ APIServices, ListService, MapService, HaversineService ],
     bootstrap: [ AppComponent ]
 })

@@ -14,9 +14,7 @@ export class APIServices {
     image_headers: RequestOptions;
 
     constructor(private http: Http) {
-        //let url = 'http://sw708e16.cs.aau.dk/services-1.0.0/';
-        let url = 'http://172.25.11.114:8080/services-1.0.0/';
-
+        let url = 'http://sw708e16.cs.aau.dk/services-1.0.0/';
 
         let headers = new Headers({
             'Content-Type': 'application/json'

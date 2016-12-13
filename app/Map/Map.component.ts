@@ -23,9 +23,7 @@ export class MapComponent {
     @Input() lat: number = 57.012048;
     @Input() lon: number = 9.991264;
     @Input() zoom: number = 13;
-    @Input() tiles: string = "https://cartodb-basemaps-b.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png";
-    //@Input() tiles: string = "http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg";
-    //@Input() tiles: string = "http://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}";
+    @Input() tiles: string = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     @ViewChild('truckster_map') mapElement: ElementRef;
 
     private routes : Array<string> = [];
@@ -40,8 +38,6 @@ export class MapComponent {
             maxZoom: 17,
             layers: [],
             closePopupOnClick: false
-        }).on('movestart', (e: MouseEvent) => { 
-            this.mapMoved();
         }).on('moveend', (e: MouseEvent) => { 
             this.mapStopped();
         });
@@ -50,8 +46,8 @@ export class MapComponent {
 
         L.tileLayer(this.tiles).addTo(map);
 
-        //this.updateBounds();
-        //this.updateRoutes();
+        this.updateBounds();
+        this.updateRoutes(true);
     }
 
     updateBounds(){
@@ -74,26 +70,13 @@ export class MapComponent {
 
             map.fitBounds(myBounds);
         }, 1000);
-
-
-        if(this.shouldZoom){
-            setTimeout(() => {
-                this.updateBounds();
-            }, 7500)
-        }
     }
 
     mapStopped(){
-        let map = this.MapService.getMap();
+        this.updateRoutes(false);
     }
 
-    mapMoved(){
-        //console.log(this.map.getCenter());
-        //console.log(this.map.getBounds());
-        this.shouldZoom = false;
-    }
-
-    updateRoutes(){
+    updateRoutes(isService){
         let map = this.MapService.getMap();
 
         let center = map.getCenter();
@@ -120,9 +103,11 @@ export class MapComponent {
 
             this.routes = active_routes;
 
-            setTimeout(() => {
-                this.updateRoutes();
-            }, 7500);
+            if(isService){
+                setTimeout(() => {
+                    this.updateRoutes(isService);
+                }, 7500);
+            }
         })
     }
 }
