@@ -46,7 +46,7 @@ export class MapComponent {
 
         L.tileLayer(this.tiles).addTo(map);
 
-        this.updateBounds();
+        //this.updateBounds();
         this.updateRoutes(true);
     }
 

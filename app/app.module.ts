@@ -7,6 +7,7 @@ import { FormsModule }                          from '@angular/forms';
 import { ListService }                          from './Services/lists.service';
 import { APIServices }                          from './Services/api.services';
 import { MapService }                           from './Services/map.services';
+import { RightMenuHelper }                      from './Services/rightMenuHelper.services';
 import { HaversineService }                     from "ng2-haversine";
 
 import { AppComponent }                         from './app.component';
@@ -21,6 +22,7 @@ import { DriverBlock }                          from './Driver/driver.component'
 import { MapComponent }                         from './Map/Map.component';
 import { RouteElement }                         from './Route/Route.component';
 import { PolylineElement }                      from './Polyline/Polyline.component';
+import { RightMenu }                            from './RightMenu/RightMenu.component';
 
 const appRoutes: Routes = [
                 { path: '', component: LoginComponent },
@@ -30,8 +32,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [BrowserModule, MaterialModule.forRoot(), RouterModule.forRoot(appRoutes), FormsModule],
-    declarations: [AppComponent, MapComponent, PolylineElement, RouteElement, LoginComponent, LogoutComponent, DashboardComponent, ProfileInfo, StaffBlock, VehiclesBlock, VehicleComponent, DriverBlock ],
-    providers: [ APIServices, ListService, MapService, HaversineService ],
+    declarations: [AppComponent, MapComponent, PolylineElement, RouteElement, LoginComponent, LogoutComponent, DashboardComponent, ProfileInfo, StaffBlock, VehiclesBlock, VehicleComponent, DriverBlock, RightMenu ],
+    providers: [ APIServices, ListService, MapService, HaversineService, RightMenuHelper ],
     bootstrap: [ AppComponent ]
 })
 

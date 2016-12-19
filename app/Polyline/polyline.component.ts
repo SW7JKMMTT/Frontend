@@ -18,7 +18,7 @@ export class PolylineElement {
     polyline : any = null;
     isStarted : boolean = false;
     car : any;
-    incomplete : string = "#FF69B4";
+    incomplete : string = "#0000ff";
     complete : string = "#FF0000";
     isIconSet : boolean = false;
     divisor : number = 0;
@@ -76,11 +76,12 @@ export class PolylineElement {
         let same = true;
         let cur_cords = this.polyline.getLatLngs();
         let map = this.MapService.getMap();
-        let divisor = (map.getMaxZoom() - map.getZoom()) + 4;
+        let divisor = ((map.getMaxZoom() - map.getZoom()) + 1) * 5;
         let lastIndex = this.route.length - 1;
         let curSpot = 0;
 
         if(this.oldLength != this.route.length || this.divisor != divisor){
+            console.log("divisor: " + divisor);
             map.removeLayer(this.polyline);
 
             let locRoute = [];
