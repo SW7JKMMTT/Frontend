@@ -18,7 +18,7 @@ declare var L: any;
 
 export class EmployeeBlock {
     @Input() employee : any;
-    userIcon : string = '';
+    employeeIcon : string = '';
     isDriving : boolean = false;
 
     constructor(private APIServices: APIServices, private ListService : ListService, private MapService : MapService) {}
