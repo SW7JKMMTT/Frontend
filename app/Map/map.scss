@@ -3,11 +3,10 @@
 
 .main {
     height: 100%;
-    width: $main * 1%;
+    width: calc(100% - 300px);
 
     position: absolute;
-    left: $width * 1%;
-    width: $main * 1%;
+    left: 300px;
     float: left;
     z-index: 1;
 
