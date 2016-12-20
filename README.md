@@ -1,7 +1,7 @@
 Consumer Client for REST API
 ============================
 
-# How To Install And Run
+# Required Dependencies
 To compile the solution, the following dependencies is required.
 
 1. Node.js v4 LTS
