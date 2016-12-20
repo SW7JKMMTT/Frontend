@@ -25,14 +25,13 @@ export class RouteElement {
 
     updateRoute(){
         this.APIServices.GetRouteData(this.routeID).subscribe(data => {
-            let route_data = data.json();
-            this.isComplete = route_data["routeState"] == "COMPLETE";
-            this.vehicleID = route_data["vehicle"];
+            this.isComplete = data["routeState"] == "COMPLETE";
+            this.vehicleID = data["vehicle"];
         });
         
         if(!this.isComplete){
             this.APIServices.GetWaypoints(this.routeID, this.lastTimestamp).subscribe(data => {
-                data.json().forEach((waypoint, index) => {
+                data.forEach((waypoint, index) => {
                     if(waypoint.timestamp > this.lastTimestamp)
                         this.lastTimestamp = waypoint.timestamp;
 

@@ -69,7 +69,7 @@ export class APIServices {
     }
 
     GetVehicleInfo(VehicleID) {
-        return this.http.get(this.url['vehicle']+'/'+VehicleID, this.auth_token);
+        return this.http.get(this.url['vehicle']+'/'+VehicleID, this.auth_token).map((res) => res.json());
     }
 
     GetVehicleIcon(VehicleID) {
@@ -78,24 +78,24 @@ export class APIServices {
 
     GetWaypoints(RouteID, timestamp) {
         if(timestamp == 0)
-            return this.http.get(this.url['route']+'/'+RouteID+'/waypoint', this.auth_token);
-        return this.http.get(this.url['route']+'/'+RouteID+'/waypoint?byRoute_after='+timestamp, this.auth_token);
-    }
-
-    GetRouteData(RouteID){
-        return this.http.get(this.url['route']+'/'+RouteID, this.auth_token);
-    }
-
-    GetRouteWithinArea(lat, lng, radius){
-        return this.http.get(this.url['route']+'?latitude='+lat+'&longitude='+lng+'&radius='+radius+'&state=ACTIVE', this.auth_token);
-    }
-
-    GetActiveRoutes() {
-        return this.http.get(this.url['route']+'?state=ACTIVE', this.auth_token);
+            return this.http.get(this.url['route']+'/'+RouteID+'/waypoint', this.auth_token).map((res) => res.json());
+        return this.http.get(this.url['route']+'/'+RouteID+'/waypoint?byRoute_after='+timestamp, this.auth_token).map((res) => res.json());
     }
 
     GetRouteWaypoints(RouteID) {
-        return this.http.get(this.url['route']+'/'+RouteID+'/waypoint', this.auth_token);
+        return this.http.get(this.url['route']+'/'+RouteID+'/waypoint', this.auth_token).map((res) => res.json());
+    }
+
+    GetRouteData(RouteID){
+        return this.http.get(this.url['route']+'/'+RouteID, this.auth_token).map((res) => res.json());
+    }
+
+    GetRouteWithinArea(lat, lng, radius){
+        return this.http.get(this.url['route']+'?latitude='+lat+'&longitude='+lng+'&radius='+radius+'&state=ACTIVE', this.auth_token).map((res) => res.json());
+    }
+
+    GetActiveRoutes() {
+        return this.http.get(this.url['route']+'?state=ACTIVE', this.auth_token).map((res) => res.json());
     }
 }
 

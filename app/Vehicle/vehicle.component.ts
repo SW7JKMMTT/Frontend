@@ -29,7 +29,7 @@ export class VehicleComponent {
                         let map = this.MapService.getMap();
 
                         let waypoints = [];
-                        data.json().forEach((waypoint, index) => {
+                        data.forEach((waypoint, index) => {
                             waypoints.push([waypoint["latitude"], waypoint["longitude"]]);
                         });
 

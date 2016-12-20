@@ -12,6 +12,7 @@ export class MapService {
     public setMap(map) {
         this.map = map;
     }
+
     public getMap() {
         return this.map;
     }

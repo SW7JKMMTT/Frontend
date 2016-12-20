@@ -17,10 +17,11 @@ div.dashboard {
 
         right-menu {
             height: 100%;
-            width: 100%;
+            width: $width * 1%;
 
             position: absolute;
             top: 0;
+            right: 0;
         }
 
         .menu {

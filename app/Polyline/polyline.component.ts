@@ -28,18 +28,18 @@ export class PolylineElement {
     @Input() isComplete : boolean = false;
     @Input() vehicleID : number = 0;
 
-    new_icon = L.icon({
+    default_icon : any = L.icon({
         iconUrl: "assets/images/Truck_Yellow.png",
         iconSize: [42, 42],
         iconAnchor: [21, 21],
     });
 
-    start_icon = L.icon({
+    start_icon : any = L.icon({
         iconUrl: 'assets/images/start.png',
         iconSize: [16, 16],
     });
 
-    end_icon = L.icon({
+    end_icon : any = L.icon({
         iconUrl: 'assets/images/end.png',
         iconSize: [16, 16],
     });
@@ -58,7 +58,7 @@ export class PolylineElement {
                 let start = new L.marker([this.route[0][0], this.route[0][1]], {icon: this.start_icon});
                 start.addTo(map);
 
-                this.car = new L.marker([this.route[0][0], this.route[0][1]], {icon: this.new_icon}).on('click', () => {
+                this.car = new L.marker([this.route[0][0], this.route[0][1]], {icon: this.default_icon}).on('click', () => {
                     this.truck_click();
                 });
 
@@ -103,7 +103,7 @@ export class PolylineElement {
                 if(this.isStarted)
                     map.removeLayer(this.car);
 
-                this.car = new L.marker([this.route[lastIndex][0], this.route[lastIndex][1]], {icon: this.new_icon}).on('click', () => {
+                this.car = new L.marker([this.route[lastIndex][0], this.route[lastIndex][1]], {icon: this.default_icon}).on('click', () => {
                     this.truck_click();
                 });
 
@@ -120,14 +120,14 @@ export class PolylineElement {
     }
 
     truck_click(){
-        console.log("TRUCK CLICK!");
+        console.log(this.vehicleID);
     }
 
     updateIcon(){
         if(!this.isIconSet && this.vehicleID != 0){
             this.isIconSet = true;
             this.APIServices.GetVehicleIcon(this.vehicleID).subscribe(data => {
-                this.new_icon = L.icon({
+                this.default_icon = L.icon({
                     iconUrl: "data:image/png;base64,"+this.IconService.CleanBody(data),
                     iconSize: [42, 42],
                     iconAnchor: [32, 44],

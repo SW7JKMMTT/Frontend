@@ -11,6 +11,7 @@ export class RightMenuHelper {
     public setVisibility(visible : boolean){
         this.isVisible = visible;
     }
+
     public getVisibility(){
         return this.isVisible;
     }

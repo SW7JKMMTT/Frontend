@@ -46,7 +46,7 @@ export class MapComponent {
 
         L.tileLayer(this.tiles).addTo(map);
 
-        //this.updateBounds();
+        this.updateBounds();
         this.updateRoutes(true);
     }
 
@@ -54,21 +54,23 @@ export class MapComponent {
         let points = [];
 
         this.APIServices.GetActiveRoutes().subscribe(data => {
-            data.json().forEach((route, index) => {
+            data.forEach((route, index) => {
                 this.APIServices.GetWaypoints(route.id, 0).subscribe(data => {
-                    data.json().forEach((waypoint, index) => {
+                    data.forEach((waypoint, index) => {
                         points.push([waypoint.latitude, waypoint.longitude]);
                     })
-                })
+                }, error => {})
             })
-        })
+        }, error => {})
 
         setTimeout(()=> {
-            let map = this.MapService.getMap();
+            if(points.length > 0) {
+                let map = this.MapService.getMap();
 
-            var myBounds = new L.LatLngBounds(points);
+                var myBounds = new L.LatLngBounds(points);
 
-            map.fitBounds(myBounds);
+                map.fitBounds(myBounds);
+            }
         }, 1000);
     }
 
@@ -97,7 +99,7 @@ export class MapComponent {
         this.APIServices.GetRouteWithinArea(center["lat"], center["lng"],kilometers).subscribe(data => {
             let active_routes = [];
 
-            data.json().forEach((element, index) => {
+            data.forEach((element, index) => {
                 active_routes.push(element["id"]);
             });
 

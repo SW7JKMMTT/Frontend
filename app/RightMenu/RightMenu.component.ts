@@ -13,4 +13,8 @@ import { RightMenuHelper } from '../Services/rightMenuHelper.services';
 
 export class RightMenu {
     constructor(private APIServices: APIServices, private RightMenuHelper: RightMenuHelper) {}
+
+    close() {
+        this.RightMenuHelper.setVisibility(false);
+    }
 }

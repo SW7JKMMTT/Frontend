@@ -19,15 +19,15 @@ export class ListService {
         let vehicles = [];
 
         this.APIServices.GetActiveRoutes().subscribe(data => {
-            this.routes = data.json();
+            this.routes = data;
         });
 
         this.APIServices.GetAllUsers().subscribe(data => {
-            this.users = data.slice(1, 3);
+            this.users = data;
         });
 
         this.APIServices.GetAllVehicles().subscribe(data => {
-            this.vehicles = data.slice(1, 3);
+            this.vehicles = data;
         });
 
         setTimeout(()=> {
