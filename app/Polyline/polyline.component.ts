@@ -75,7 +75,7 @@ export class PolylineElement {
         let same = true;
         let cur_cords = this.polyline.getLatLngs();
         let map = this.MapService.getMap();
-        let divisor = ((map.getMaxZoom() - map.getZoom()) + 1) * 5;
+        let divisor = ((map.getMaxZoom() - map.getZoom()) + 1) * 3;
         let lastIndex = this.route.length - 1;
         let curSpot = 0;
 
