@@ -1,15 +1,20 @@
 Consumer Client for REST API
 ============================
+
 # How To Install And Run
-To compile the solution, the following dependencies is required:
+To compile the solution, the following dependencies is required.
+
 1. Node.js v4 LTS
 1. SASS Compiler
 
+
 # How To Install And Run
+
 Clone the repository:
 ```bash
 git clone https://github.com/SW7JKMMTT/Frontend.git
-cd Frontend```
+cd Frontend
+```
 
 Install the needed packages:
 ```bash
