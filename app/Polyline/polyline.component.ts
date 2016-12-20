@@ -58,7 +58,6 @@ export class PolylineElement {
                 let start = new L.marker([this.route[0][0], this.route[0][1]], {icon: this.start_icon});
                 start.addTo(map);
 
-                console.log("Icon used");
                 this.car = new L.marker([this.route[0][0], this.route[0][1]], {icon: this.new_icon}).on('click', () => {
                     this.truck_click();
                 });
@@ -81,7 +80,6 @@ export class PolylineElement {
         let curSpot = 0;
 
         if(this.oldLength != this.route.length || this.divisor != divisor){
-            console.log("divisor: " + divisor);
             map.removeLayer(this.polyline);
 
             let locRoute = [];
@@ -129,7 +127,6 @@ export class PolylineElement {
         if(!this.isIconSet && this.vehicleID != 0){
             this.isIconSet = true;
             this.APIServices.GetVehicleIcon(this.vehicleID).subscribe(data => {
-                console.log("Update should have happend?");
                 this.new_icon = L.icon({
                     iconUrl: "data:image/png;base64,"+this.IconService.CleanBody(data),
                     iconSize: [42, 42],
@@ -150,7 +147,6 @@ export class PolylineElement {
             this.polyline = new L.polyline(this.route, {color: this.complete, weight: 7});
             this.polyline.addTo(map);
 
-            console.log("Icon used");
             this.car = new L.marker([this.route[lastIndex][0], this.route[lastIndex][1]], {icon: this.end_icon});
             this.car.addTo(map);
         }

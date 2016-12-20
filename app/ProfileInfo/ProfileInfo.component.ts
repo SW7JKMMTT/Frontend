@@ -20,34 +20,28 @@ export class ProfileInfo {
     profileImage : string = '';
     hasIcon : boolean = false;
 
-    constructor(private APIServices: APIServices, private router: Router) {
-        if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
-            router.navigate(['login']);
-    }
+    constructor(private APIServices: APIServices, private router: Router) {}
 
     ngOnInit()
     {
-        this.APIServices.GetCurrentUser().subscribe(
-            data => {
-                for (var i=0; i < data.length; i++) {
-                    if(data[i].id == localStorage.getItem("user")) {
-                        this.firstname = data[i].givenname;
-                        this.surname = data[i].surname;
-                        this.hasIcon = data[i].hasIcon;
+        this.APIServices.GetCurrentUser(localStorage.getItem("user")).subscribe(data => {
+            this.firstname = data.givenname;
+            this.surname = data.surname;
+            this.hasIcon = data.hasIcon;
 
-                        if(data[i].permissions.length > 0)
-                            this.position = data[i].permissions[0].permission;
+            if(data.permissions.length > 0)
+                this.position = data.permissions[0].permission;
 
-                        if(this.hasIcon)
-                            this.APIServices.GetUserIcon(data[i].id).subscribe(
-                                data => {
-                                    let imageData = data["_body"].replace(/(\r\n|\n|\r)/gm,"");
+            if(this.hasIcon)
+                this.APIServices.GetUserIcon(data.id).subscribe(
+                    data => {
+                        let imageData = data["_body"].replace(/(\r\n|\n|\r)/gm,"");
 
-                                    this.profileImage = imageData;
-                                })
-                    }
-                }
-            }
-        )
+                        this.profileImage = imageData;
+                    })
+        }, error => {
+            localStorage.clear();
+            this.router.navigate(['login']);
+        });
     }
 }

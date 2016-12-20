@@ -42,9 +42,7 @@ export class VehicleComponent {
             });
         }
 
-        console.log(this.vehicleData["id"]);
         this.RightMenuHelper.setVisibility(true);
-        console.log("set to true")
     }
 
     ngDoCheck(){

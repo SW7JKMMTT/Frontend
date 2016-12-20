@@ -1,5 +1,6 @@
-import { Component }                from '@angular/core';
-import { APIServices }              from '../Services/api.services';
+import { Router }         from '@angular/router';
+import { Component }      from '@angular/core';
+import { APIServices }    from '../Services/api.services';
 
 @Component({
     moduleId: module.id.replace("/dist/", "/app/"),
@@ -12,7 +13,10 @@ import { APIServices }              from '../Services/api.services';
 
 export class DashboardComponent {
     private currentVis : string = "staff";
-    constructor(private APIServices: APIServices){}
+    constructor(private APIServices: APIServices, private router: Router){
+        if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
+            router.navigate(['login']);
+    }
 
     clicked(event : string)
     {

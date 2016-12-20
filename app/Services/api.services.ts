@@ -14,7 +14,7 @@ export class APIServices {
     image_headers: RequestOptions;
 
     constructor(private http: Http) {
-        let url = 'http://sw708e16.cs.aau.dk/services-1.0.0/';
+        let url = 'http://172.25.23.247:8080/services-1.0.0/';
 
         let headers = new Headers({
             'Content-Type': 'application/json'
@@ -49,15 +49,15 @@ export class APIServices {
             'password': password
         });
 
-        return this.http.post(this.url['login'], parameters, this.options);
+        return this.http.post(this.url['login'], parameters, this.options).map((res) => res.json());
     }
 
-    GetCurrentUser() {
-        return this.http.get(this.url['user'], this.auth_token).map((res) => res.json());
+    GetCurrentUser(userID) {
+        return this.http.get(this.url['user']+"/"+userID, this.auth_token).map((res) => res.json());
     }
     
     GetAllUsers() {
-        return this.http.get(this.url['user'], this.auth_token);
+        return this.http.get(this.url['user'], this.auth_token).map((res) => res.json());
     }
 
     GetUserIcon(userid) {
@@ -65,7 +65,7 @@ export class APIServices {
     }
 
     GetAllVehicles() {
-        return this.http.get(this.url['vehicle'], this.auth_token);
+        return this.http.get(this.url['vehicle'], this.auth_token).map((res) => res.json());
     }
 
     GetVehicleInfo(VehicleID) {
