@@ -12,7 +12,15 @@ export class RightMenuHelper {
         this.isVisible = visible;
     }
 
+    public setVehicleID(vehicleID : number){
+        this.vehicleID = vehicleID;
+    }
+
     public getVisibility(){
         return this.isVisible;
+    }
+
+    public getVehicleID(){
+        return this.vehicleID;
     }
 }

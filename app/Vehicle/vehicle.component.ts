@@ -42,6 +42,7 @@ export class VehicleComponent {
             });
         }
 
+        this.RightMenuHelper.setVehicleID(vehicleData["id"]);
         this.RightMenuHelper.setVisibility(true);
     }
 

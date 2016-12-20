@@ -1,9 +1,10 @@
 import { Component, Input, ElementRef, ViewChild, Optional }   from '@angular/core';
-import { IntervalObservable }                           from 'rxjs/observable/IntervalObservable';
-import { MapService }                                   from '../Services/map.services';
-import { MapComponent }                                 from '../Map/Map.component'
-import { APIServices }                                  from '../Services/api.services';
-import { IconService }                                  from '../Services/icon.service';
+import { IntervalObservable }                                  from 'rxjs/observable/IntervalObservable';
+import { MapService }                                          from '../Services/map.services';
+import { MapComponent }                                        from '../Map/Map.component'
+import { APIServices }                                         from '../Services/api.services';
+import { IconService }                                         from '../Services/icon.service';
+import { RightMenuHelper }                                     from '../Services/rightMenuHelper.services';
 
 declare var L: any;
 
@@ -44,7 +45,7 @@ export class PolylineElement {
         iconSize: [16, 16],
     });
 
-    constructor(private IconService : IconService, private APIServices : APIServices, private MapService : MapService, @Optional() private MapComponent?: MapComponent){}
+    constructor(private IconService : IconService, private APIServices : APIServices, private MapService : MapService, private RightMenuHelper : RightMenuHelper, @Optional() private MapComponent?: MapComponent){}
 
     ngOnInit(){
         if (this.MapComponent) {
@@ -119,8 +120,9 @@ export class PolylineElement {
         this.endRoute();
     }
 
-    truck_click(){
-        console.log(this.vehicleID);
+    truck_click() {
+        this.RightMenuHelper.setVehicleID(this.vehicleID);
+        this.RightMenuHelper.setVisibility(true);
     }
 
     updateIcon(){
