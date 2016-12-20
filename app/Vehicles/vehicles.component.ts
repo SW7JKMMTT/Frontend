@@ -15,18 +15,28 @@ export class VehiclesBlock {
 
     constructor(private ListService : ListService) {}
 
+    private increment : number = 20;
+    private numVehicles : number = this.increment;
+
     ngOnInit(){
         this.updateVehicles();
     }
 
     updateVehicles(){
         if (this.ListService.vehicles != this.vehicles)
-            this.vehicles = this.ListService.vehicles;
+            this.vehicles = this.ListService.vehicles.slice(0, this.numVehicles);
 
         this.isEmpty = this.ListService.vehicles.length == 0;
 
         setTimeout(() => {
             this.updateVehicles();
         }, 5000);
+    }
+
+    loadMore() {
+        this.numVehicles += this.increment;
+
+        if (this.ListService.vehicles != this.vehicles)
+            this.vehicles = this.ListService.vehicles.slice(0, this.numVehicles);
     }
 }

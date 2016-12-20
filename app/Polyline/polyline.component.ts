@@ -3,14 +3,13 @@ import { IntervalObservable }                                  from 'rxjs/observ
 import { MapService }                                          from '../Services/map.services';
 import { MapComponent }                                        from '../Map/Map.component'
 import { APIServices }                                         from '../Services/api.services';
-import { IconService }                                         from '../Services/icon.service';
 import { RightMenuHelper }                                     from '../Services/rightMenuHelper.services';
 
 declare var L: any;
 
 @Component({
     moduleId: module.id.replace("/dist/", "/app/"),
-    providers: [ APIServices, IconService ],
+    providers: [ APIServices ],
     selector: 'polyline',
     templateUrl: 'polyline.html'
 })
@@ -45,7 +44,7 @@ export class PolylineElement {
         iconSize: [16, 16],
     });
 
-    constructor(private IconService : IconService, private APIServices : APIServices, private MapService : MapService, private RightMenuHelper : RightMenuHelper, @Optional() private MapComponent?: MapComponent){}
+    constructor(private APIServices : APIServices, private MapService : MapService, private RightMenuHelper : RightMenuHelper, @Optional() private MapComponent?: MapComponent){}
 
     ngOnInit(){
         if (this.MapComponent) {
@@ -130,7 +129,7 @@ export class PolylineElement {
             this.isIconSet = true;
             this.APIServices.GetVehicleIcon(this.vehicleID).subscribe(data => {
                 this.default_icon = L.icon({
-                    iconUrl: "data:image/png;base64,"+this.IconService.CleanBody(data),
+                    iconUrl: "data:image/png;base64,"+data,
                     iconSize: [42, 42],
                     iconAnchor: [32, 44],
                 });

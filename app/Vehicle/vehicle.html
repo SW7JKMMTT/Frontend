@@ -1,11 +1,12 @@
 <div class="vehicle noselect" (click)="clicked(vehicleData.isActive)">
-    <div class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)">
-        <div class="driver-pic"></div>
+    <div class="vehicle-pic" [ngStyle]="{'background-image': vehicleIcon}">
+        <div *ngIf="vehicleData.isActive" class="driver-pic"></div>
     </div>
+
     <div class="vehicle-text">
         <p class="vehicle-name">{{ vehicleData.make }} {{ vehicleData.model }}</p>
         <p class="vehicle-vintage">Vintage: {{ vehicleData.vintage }}</p>
         <p class="vehicle-status">Status: {{ isMoveing }}</p>
-        <p class="driver-name">Walter White &nbsp;</p>
+        <p *ngIf="vehicleData.isActive" class="driver-name">Walter White &nbsp;</p>
     </div>
 </div>

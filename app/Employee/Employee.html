@@ -1,0 +1,12 @@
+<div class="employee noselect" (click)="clicked()">
+    <div class="employee-pic" [ngStyle]="{'background-image': userIcon}">
+        <div *ngIf="isDriving" class="vehicle-pic" style="background-image: url(assets/images/vehicle.jpg)"></div>
+    </div>
+
+    <div class="employee-text">
+        <p class="employee-name">{{ employee.givenname }} {{ employee.surname }}</p>
+        <p class="employee-username">{{ employee.username }}</p>
+        <p *ngIf="isDriving" class="employee-status">Status: Driving</p>
+        <p *ngIf="!isDriving" class="employee-status">Status: Parked</p>
+    </div>
+</div>

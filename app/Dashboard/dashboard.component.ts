@@ -12,7 +12,7 @@ import { APIServices }    from '../Services/api.services';
 
 
 export class DashboardComponent {
-    private currentVis : string = "staff";
+    private currentVis : string = "employees";
     constructor(private APIServices: APIServices, private router: Router){
         if(localStorage.getItem("token") === null || localStorage.getItem("user") === null)
             router.navigate(['login']);

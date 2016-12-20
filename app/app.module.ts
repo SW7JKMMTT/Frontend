@@ -15,10 +15,10 @@ import { LoginComponent }                       from './Login/login.component';
 import { LogoutComponent }                      from './Logout/logout.component';
 import { DashboardComponent }                   from './Dashboard/dashboard.component';
 import { ProfileInfo }                          from './ProfileInfo/ProfileInfo.component';
-import { StaffBlock }                           from './Staff/staff.component';
+import { EmployeesBlock }                       from './Employees/Employees.component';
 import { VehiclesBlock }                        from './Vehicles/vehicles.component';
 import { VehicleComponent }                     from './Vehicle/vehicle.component';
-import { DriverBlock }                          from './Driver/driver.component';
+import { EmployeeBlock }                        from './Employee/Employee.component';
 import { MapComponent }                         from './Map/Map.component';
 import { RouteElement }                         from './Route/Route.component';
 import { PolylineElement }                      from './Polyline/Polyline.component';
@@ -32,7 +32,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [BrowserModule, MaterialModule.forRoot(), RouterModule.forRoot(appRoutes), FormsModule],
-    declarations: [AppComponent, MapComponent, PolylineElement, RouteElement, LoginComponent, LogoutComponent, DashboardComponent, ProfileInfo, StaffBlock, VehiclesBlock, VehicleComponent, DriverBlock, RightMenu ],
+    declarations: [AppComponent, MapComponent, PolylineElement, RouteElement, LoginComponent, LogoutComponent, DashboardComponent, ProfileInfo, EmployeesBlock, VehiclesBlock, VehicleComponent, EmployeeBlock, RightMenu ],
     providers: [ APIServices, ListService, MapService, HaversineService, RightMenuHelper ],
     bootstrap: [ AppComponent ]
 })

@@ -1,6 +1,5 @@
 <div class="profile-info">
-    <div *ngIf="hasIcon" class="profile-pic" [ngStyle]="{'background-image': 'url(data:image/png;base64,' + profileImage + ')'}"></div>
-    <div *ngIf="!hasIcon" class="profile-pic"></div>
+    <div class="profile-pic" [ngStyle]="{'background-image': profileImage}"></div>
 
     <div class="profile-text">
         <h1>{{ firstname }} {{ surname }}</h1>

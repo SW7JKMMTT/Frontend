@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { APIServices } from './api.services';
-import { EmitterService } from './emitter.service';
 
 
 @Injectable()
@@ -10,11 +9,11 @@ export class ListService {
     users : Array<any> = [];
     vehicles : Array<any> = [];
 
-    constructor(private APIServices : APIServices){
+    constructor(private APIServices : APIServices) {
         this.updateData();
     }
 
-    updateData(){
+    updateData() {
         let users = [];
         let vehicles = [];
 
@@ -33,5 +32,13 @@ export class ListService {
         setTimeout(()=> {
             this.updateData();
         }, 10000);
+    }
+
+    getUsers(offset, quantity) {
+        return this.users.slice(offset, quantity);
+    }
+
+    getVehicles(offset, quantity) {
+        return this.vehicles.slice(offset, quantity);
     }
 }

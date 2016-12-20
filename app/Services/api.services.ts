@@ -61,7 +61,7 @@ export class APIServices {
     }
 
     GetUserIcon(userid) {
-        return this.http.get(this.url['user']+'/'+userid+'/icon', this.image_headers);
+        return this.http.get(this.url['user']+'/'+userid+'/icon', this.image_headers).map((res) => res["_body"].replace(/(\r\n|\n|\r)/gm,""));
     }
 
     GetAllVehicles() {
@@ -73,7 +73,7 @@ export class APIServices {
     }
 
     GetVehicleIcon(VehicleID) {
-        return this.http.get(this.url['vehicle']+'/'+VehicleID+'/icon', this.image_headers);
+        return this.http.get(this.url['vehicle']+'/'+VehicleID+'/icon', this.image_headers).map((res) => res["_body"].replace(/(\r\n|\n|\r)/gm,""));
     }
 
     GetWaypoints(RouteID, timestamp) {

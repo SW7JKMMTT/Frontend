@@ -4,27 +4,27 @@
             <profile-info></profile-info>
 
             <div class="tab-container">
-                <div *ngIf="currentVis == 'staff'" class="tab noselect active" (click)="clicked('staff')">
-                    <p>Staff</p>
+                <div *ngIf="currentVis == 'employees'" class="tab noselect active" (click)="clicked('employees')">
+                    <p>Employees</p>
                 </div>
-                <div *ngIf="currentVis != 'staff'" class="tab noselect" (click)="clicked('staff')">
-                    <p>Staff</p>
+                <div *ngIf="currentVis != 'employees'" class="tab noselect" (click)="clicked('employees')">
+                    <p>Employees</p>
                 </div>
 
-                <div *ngIf="currentVis == 'vehicle'" class="tab noselect active" (click)="clicked('vehicle')">
+                <div *ngIf="currentVis == 'vehicles'" class="tab noselect active" (click)="clicked('vehicles')">
                     <p>Vehicles</p>
                 </div>
-                <div *ngIf="currentVis != 'vehicle'" class="tab noselect" (click)="clicked('vehicle')">
+                <div *ngIf="currentVis != 'vehicles'" class="tab noselect" (click)="clicked('vehicles')">
                     <p>Vehicles</p>
                 </div>
             </div>
 
-            <div *ngIf="currentVis == 'vehicle'" class="tab-contents-container">
+            <div *ngIf="currentVis == 'vehicles'" class="tab-contents-container">
                 <vehicle-container></vehicle-container>
             </div>
 
-            <div *ngIf="currentVis == 'staff'" class="tab-contents-container">
-                <staff-container></staff-container>
+            <div *ngIf="currentVis == 'employees'" class="tab-contents-container">
+                <employee-container></employee-container>
             </div>
         </div>
         

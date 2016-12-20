@@ -8,7 +8,7 @@ import { RightMenuHelper }  from '../Services/rightMenuHelper.services';
 declare var L: any;
 
 @Component({
-    moduleId: module.id.replace("/dist/", "/app/"),
+    moduleId: module.id.replace('/dist/', '/app/'),
     selector: 'vehicle',
     providers: [ APIServices ],
     templateUrl: 'vehicle.html',
@@ -17,23 +17,30 @@ declare var L: any;
 
 export class VehicleComponent {
     @Input() vehicleData: any = [];
-    isMoveing : string = "Parked";
+    vehicleIcon : string = '';
+    isMoveing : string = 'Parked';
 
-    constructor(private APIServices : APIServices, private ListService : ListService, private MapService : MapService, private RightMenuHelper: RightMenuHelper){}
+    constructor(private APIServices : APIServices, private ListService : ListService, private MapService : MapService, private RightMenuHelper: RightMenuHelper) {}
 
-    clicked(e){
-        if(e){
+    ngOnInit() {
+        // this.APIServices.GetVehicleIcon(this.vehicleData.id).subscribe(data => {
+        //     this.vehicleIcon = 'url(data:image/png;base64,'+data+')';
+        // }, error => {})
+    }
+
+    clicked(e) {
+        if(e) {
             this.ListService.routes.forEach((route, index) => {
-                if(route["vehicle"] == this.vehicleData["id"]){
-                    this.APIServices.GetWaypoints(route["id"], 0).subscribe(data => {
+                if(route['vehicle'] == this.vehicleData['id']) {
+                    this.APIServices.GetWaypoints(route['id'], 0).subscribe(data => {
                         let map = this.MapService.getMap();
 
                         let waypoints = [];
                         data.forEach((waypoint, index) => {
-                            waypoints.push([waypoint["latitude"], waypoint["longitude"]]);
+                            waypoints.push([waypoint['latitude'], waypoint['longitude']]);
                         });
 
-                        if(waypoints.length > 0 && map != null){
+                        if(waypoints.length > 0 && map != null) {
                             var routeBounds = new L.LatLngBounds(waypoints);
                             map.fitBounds(routeBounds);
                         }
@@ -42,15 +49,15 @@ export class VehicleComponent {
             });
         }
 
-        this.RightMenuHelper.setVehicleID(vehicleData["id"]);
+        this.RightMenuHelper.setVehicleID(this.vehicleData['id']);
         this.RightMenuHelper.setVisibility(true);
     }
 
-    ngDoCheck(){
-        if(this.vehicleData["isActive"]){
-            this.isMoveing = "Driving";
+    ngDoCheck() {
+        if(this.vehicleData['isActive']) {
+            this.isMoveing = 'Driving';
         }else{
-            this.isMoveing = "Parked";
+            this.isMoveing = 'Parked';
         }
     }
 }
